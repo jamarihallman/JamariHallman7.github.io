@@ -11,18 +11,22 @@
   .tag { display: inline-block; font-size: 10px; color: #c9a24b; border: 1px solid #4a3f28; border-radius: 999px; padding: 3px 10px; margin-left: 8px; }
 
   h1 { font-size: 28px; font-weight: 700; color: #f2ede2; margin: 20px 0 6px; }
-  .subtitle { font-size: 14px; color: #a89a83; margin: 0 0 32px; }
+  .subtitle { font-size: 14px; color: #a89a83; margin: 0 0 40px; }
 
-  .hero-block { margin-bottom: 24px; }
-  .pic-hero { width: 100%; height: 420px; border-radius: 8px; border: 1px solid #4a3f28; display: block; margin-bottom: 10px; background: #f2ede2; object-fit: contain; }
-  .pic-title { font-size: 16px; font-weight: 600; color: #f2ede2; margin: 0 0 6px; }
+  .hero-block { text-align: center; margin-bottom: 56px; }
+  .pic-hero { max-width: 500px; width: 100%; height: auto; border-radius: 8px; border: 1px solid #4a3f28; display: inline-block; margin-bottom: 12px; }
+  .pic-title { font-size: 17px; font-weight: 600; color: #c9a24b; margin: 0 0 10px; }
+  .hero-cap { font-size: 14px; line-height: 1.7; color: #d8d2c2; max-width: 640px; margin: 0 auto; }
 
-  .row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 36px; }
-  .pic-normal { width: 100%; height: 240px; border-radius: 8px; border: 1px solid #4a3f28; display: block; margin-bottom: 8px; background: #f2ede2; object-fit: contain; }
-  .pdf-embed { width: 100%; height: 240px; border-radius: 8px; border: 1px solid #4a3f28; display: block; margin-bottom: 8px; }
-  .cap { font-size: 12.5px; line-height: 1.55; color: #d8d2c2; margin: 0; }
+  .section-block { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-bottom: 64px; }
+  .section-block.reverse { direction: rtl; }
+  .section-block.reverse > * { direction: ltr; }
+  .pic-large { width: 100%; height: 340px; border-radius: 8px; border: 1px solid #4a3f28; display: block; background: #f2ede2; object-fit: contain; }
+  .pdf-large { width: 100%; height: 340px; border-radius: 8px; border: 1px solid #4a3f28; display: block; }
+  .section-title { font-size: 16px; font-weight: 600; color: #c9a24b; text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 12px; }
+  .section-text { font-size: 14.5px; line-height: 1.8; color: #d8d2c2; margin: 0; }
 
-  h2 { font-size: 15px; color: #c9a24b; text-transform: uppercase; letter-spacing: 0.05em; margin: 32px 0 10px; }
+  h2 { font-size: 15px; color: #c9a24b; text-transform: uppercase; letter-spacing: 0.05em; margin: 40px 0 12px; }
   p.body { font-size: 14px; line-height: 1.7; color: #d8d2c2; margin: 0; }
 </style>
 </head>
@@ -37,22 +41,31 @@
 
   <div class="hero-block">
     <img class="pic-hero" src="residential-schedule-1.jpg" alt="Two story residential building overview">
-    <p class="pic-title">Two-Story Residential Building</p>
-    <p class="cap">A 26 ft &times; 30 ft, two-story residential building developed on a 30 ft &times; 40 ft lot in Charlotte, NC, as provided in the assignment brief. My work translated this design into a coordinated Primavera P6 construction schedule and reviewed the accompanying floor and site plans.</p>
+    <p class="pic-title">From Blueprint to Build Plan</p>
+    <p class="hero-cap">A 26 ft &times; 30 ft, two-story residential building developed on a 30 ft &times; 40 ft lot in Charlotte, NC, as provided in the assignment brief. Green Construction Company's architects finalized this design, and my role as project manager was to review it and translate it into a coordinated Primavera P6 construction schedule using the accompanying site and floor plans.</p>
   </div>
 
-  <div class="row3">
+  <div class="section-block">
+    <img class="pic-large" src="residential-schedule-2.jpg" alt="Primavera P6 construction schedule chart">
     <div>
-      <img class="pic-normal" src="residential-schedule-2.jpg" alt="Primavera P6 construction schedule chart">
-      <p class="cap">The Primavera P6 schedule established a 66-day construction sequence consisting of a 50-day substructure phase, 14-day Level 1 phase, and 2-day Level 2 phase. Activities shown in the schedule carry zero total float, creating a tightly constrained sequence in which delays to predecessor activities could directly affect the planned completion date.</p>
+      <p class="section-title">Construction Schedule</p>
+      <p class="section-text">The Primavera P6 schedule established a 66-day construction sequence broken into a 50-day substructure phase, a 14-day Level 1 phase, and a 2-day Level 2 phase. Excavation and brickwork alone accounted for 47 of the 50 substructure days, making them the activities that governed how quickly framing above could begin. Every activity in the schedule carries zero total float, meaning there was no slack anywhere in the sequence and any delay to an early activity would push the entire 66-day completion date back.</p>
     </div>
+  </div>
+
+  <div class="section-block reverse">
     <div>
-      <embed class="pdf-embed" src="residential-schedule-3.pdf" type="application/pdf">
-      <p class="cap">The site plan establishes the building's placement on the 30 ft &times; 40 ft lot, including setbacks, access, and the fenced site boundary shown in the assignment drawings. Reviewing this plan alongside the schedule made clear how site constraints shaped the construction sequencing decisions.</p>
+      <p class="section-title">Site Plan</p>
+      <p class="section-text">The site plan establishes the building's placement on the 30 ft &times; 40 ft lot, including setbacks, vehicle and pedestrian access, and the fenced site boundary shown in the assignment drawings. Reviewing this plan alongside the schedule made clear how the site's fixed dimensions constrained staging and access during the substructure phase, when excavation and brickwork activities needed room to proceed without interfering with the rest of the lot.</p>
     </div>
+    <embed class="pdf-large" src="residential-schedule-3.pdf" type="application/pdf">
+  </div>
+
+  <div class="section-block">
+    <embed class="pdf-large" src="residential-schedule-4.pdf" type="application/pdf">
     <div>
-      <embed class="pdf-embed" src="residential-schedule-4.pdf" type="application/pdf">
-      <p class="cap">The second floor plan lays out the upper level's room arrangement and structural bearing points relative to the floor below. Coordinating this layout with the ground floor plan was necessary to confirm that column and beam locations lined up consistently between levels.</p>
+      <p class="section-title">Second Floor Plan</p>
+      <p class="section-text">The second floor plan lays out the upper level's room arrangement and the structural bearing points that carry down to the framing below. Coordinating this layout with the ground floor plan was necessary to confirm that column and beam locations lined up consistently between levels, since misaligned bearing points at Level 2 would have created load path problems for the Level 1 framing scheduled ahead of it.</p>
     </div>
   </div>
 
