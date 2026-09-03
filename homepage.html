@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,9 +16,15 @@
   />
 
   <style>
+
+    /* =========================================
+       COLOR SYSTEM
+    ========================================= */
+
     :root {
       --black: #0a0a0a;
       --black-soft: #121212;
+
       --white: #f5f5f2;
       --white-muted: rgba(245, 245, 242, 0.72);
 
@@ -35,6 +42,11 @@
         sans-serif;
     }
 
+
+    /* =========================================
+       GLOBAL RESET
+    ========================================= */
+
     * {
       box-sizing: border-box;
     }
@@ -43,6 +55,7 @@
     body {
       margin: 0;
       padding: 0;
+      width: 100%;
       min-height: 100%;
     }
 
@@ -58,19 +71,29 @@
       -webkit-font-smoothing: antialiased;
     }
 
+
     /* =========================================
        HOME PAGE
     ========================================= */
 
     .home-page {
+      width: 100%;
       min-height: 100vh;
+
       position: relative;
       overflow: hidden;
+
       background: #05090d;
     }
 
+
     /* =========================================
        BACKGROUND IMAGE
+
+       IMPORTANT:
+       This now calls the JPG file:
+
+       homepage-engineering-hero.jpg
     ========================================= */
 
     .hero-background {
@@ -78,7 +101,7 @@
       inset: 0;
 
       background-image:
-        url("homepage-engineering-hero.png");
+        url("homepage-engineering-hero.jpg");
 
       background-size: cover;
       background-position: center center;
@@ -87,20 +110,25 @@
       z-index: 1;
     }
 
+
     /* =========================================
-       DARK LEFT-SIDE GRADIENT
-       Keeps wording readable without making
-       the actual building too dark.
+       LEFT-SIDE DARK GRADIENT
+
+       Keeps Jamari Hallman readable while
+       allowing the structural/BIM model to
+       remain visible on the right.
     ========================================= */
 
     .hero-background::before {
       content: "";
+
       position: absolute;
       inset: 0;
 
       background:
         linear-gradient(
           90deg,
+
           rgba(3, 8, 12, 0.97) 0%,
           rgba(3, 8, 12, 0.92) 24%,
           rgba(3, 8, 12, 0.72) 39%,
@@ -110,24 +138,30 @@
         );
     }
 
-    /* slight overall cinematic shading */
+
+    /* =========================================
+       CINEMATIC SHADING
+    ========================================= */
 
     .hero-background::after {
       content: "";
+
       position: absolute;
       inset: 0;
 
       background:
         linear-gradient(
           180deg,
+
           rgba(0, 0, 0, 0.08) 0%,
           rgba(0, 0, 0, 0.02) 48%,
           rgba(0, 0, 0, 0.22) 100%
         );
     }
 
+
     /* =========================================
-       BLUEPRINT DETAILS
+       BLUEPRINT OVERLAY
     ========================================= */
 
     .blueprint-overlay {
@@ -135,33 +169,41 @@
       inset: 0;
 
       z-index: 2;
+
       pointer-events: none;
 
       opacity: 0.38;
 
       background-image:
+
         linear-gradient(
           rgba(23, 116, 160, 0.08) 1px,
           transparent 1px
         ),
+
         linear-gradient(
           90deg,
           rgba(23, 116, 160, 0.08) 1px,
           transparent 1px
         );
 
-      background-size:
-        72px 72px;
+      background-size: 72px 72px;
 
       mask-image:
         linear-gradient(
           90deg,
+
           black 0%,
           rgba(0, 0, 0, 0.9) 25%,
           rgba(0, 0, 0, 0.3) 48%,
           transparent 68%
         );
     }
+
+
+    /* =========================================
+       TECHNICAL CIRCLES
+    ========================================= */
 
     .technical-circle {
       position: absolute;
@@ -176,13 +218,16 @@
       border-radius: 50%;
 
       z-index: 3;
+
       pointer-events: none;
     }
+
 
     .circle-one {
       top: 15%;
       left: 5%;
     }
+
 
     .circle-two {
       bottom: 7%;
@@ -192,12 +237,19 @@
       height: 85px;
     }
 
+
     /* =========================================
-       TOP BRAND AREA
+       TOP BRAND BAR
+
+       ONLY JH appears here.
+       No second Jamari Hallman.
+       No navigation.
+       No hamburger.
     ========================================= */
 
     .top-brand {
       position: relative;
+
       z-index: 10;
 
       height: 96px;
@@ -216,8 +268,14 @@
       background:
         rgba(4, 8, 11, 0.88);
 
-      backdrop-filter: blur(7px);
+      backdrop-filter:
+        blur(7px);
     }
+
+
+    /* =========================================
+       JH LOGO
+    ========================================= */
 
     .jh-logo {
       position: relative;
@@ -240,6 +298,7 @@
       padding-right: 24px;
     }
 
+
     .jh-logo::after {
       content: "";
 
@@ -258,14 +317,6 @@
         var(--gold-border);
     }
 
-    /*
-      IMPORTANT:
-      No small Jamari Hallman name at the top.
-      No Projects / About / Services / Skills.
-      No Resume.
-      No Contact.
-      No hamburger menu.
-    */
 
     /* =========================================
        HERO CONTENT
@@ -273,12 +324,14 @@
 
     .hero-content {
       position: relative;
+
       z-index: 5;
 
       min-height:
         calc(100vh - 96px);
 
       display: flex;
+
       align-items: center;
 
       padding:
@@ -287,6 +340,7 @@
         clamp(95px, 12vh, 130px);
     }
 
+
     .hero-text {
       width:
         min(
@@ -294,6 +348,7 @@
           46vw
         );
     }
+
 
     /* =========================================
        MAIN NAME
@@ -330,12 +385,14 @@
         both;
     }
 
+
     /* =========================================
        GOLD LINE UNDER NAME
     ========================================= */
 
     .name-divider {
       width: 88px;
+
       height: 4px;
 
       margin:
@@ -351,8 +408,9 @@
         );
     }
 
+
     /* =========================================
-       DISCIPLINES
+       ENGINEERING DISCIPLINES
     ========================================= */
 
     .disciplines {
@@ -382,6 +440,7 @@
         ease
         both;
     }
+
 
     /* =========================================
        TAGLINE
@@ -416,8 +475,9 @@
         both;
     }
 
+
     /* =========================================
-       SUBTITLE
+       PORTFOLIO LABEL
     ========================================= */
 
     .portfolio-label {
@@ -446,6 +506,7 @@
         both;
     }
 
+
     /* =========================================
        VIEW PROJECTS BUTTON
     ========================================= */
@@ -456,6 +517,7 @@
       width: fit-content;
 
       display: inline-flex;
+
       align-items: center;
 
       gap: 17px;
@@ -483,8 +545,7 @@
 
       text-transform: uppercase;
 
-      font-size:
-        0.98rem;
+      font-size: 0.98rem;
 
       font-weight: 800;
 
@@ -508,6 +569,7 @@
         both;
     }
 
+
     .view-projects:hover {
       transform:
         translateY(-3px);
@@ -520,14 +582,15 @@
         rgba(201, 162, 39, 0.26);
     }
 
+
     .view-projects:focus-visible {
       outline:
         2px solid
         var(--white);
 
-      outline-offset:
-        4px;
+      outline-offset: 4px;
     }
+
 
     /* =========================================
        BUILDING ICON
@@ -540,9 +603,9 @@
       flex-shrink: 0;
     }
 
+
     .arrow {
-      font-size:
-        1.45rem;
+      font-size: 1.45rem;
 
       line-height: 1;
 
@@ -552,11 +615,12 @@
         ease;
     }
 
-    .view-projects:hover
-    .arrow {
+
+    .view-projects:hover .arrow {
       transform:
         translateX(5px);
     }
+
 
     /* =========================================
        BOTTOM SCROLL CHEVRON
@@ -592,6 +656,7 @@
         infinite;
     }
 
+
     /* =========================================
        BOTTOM GOLD LINE
     ========================================= */
@@ -611,11 +676,13 @@
         var(--gold-border);
     }
 
+
     /* =========================================
        ANIMATIONS
     ========================================= */
 
     @keyframes fadeUp {
+
       from {
         opacity: 0;
 
@@ -631,25 +698,29 @@
       }
     }
 
+
     @keyframes scrollBounce {
+
       0%,
       100% {
         margin-bottom: 6px;
+
         opacity: 0.55;
       }
 
       50% {
         margin-bottom: -1px;
+
         opacity: 1;
       }
     }
+
 
     /* =========================================
        LAPTOP / TABLET
     ========================================= */
 
-    @media
-    (max-width: 1050px) {
+    @media (max-width: 1050px) {
 
       .hero-text {
         width:
@@ -669,12 +740,12 @@
       }
     }
 
+
     /* =========================================
        MOBILE
     ========================================= */
 
-    @media
-    (max-width: 760px) {
+    @media (max-width: 760px) {
 
       .top-brand {
         height: 78px;
@@ -719,6 +790,7 @@
         background:
           linear-gradient(
             90deg,
+
             rgba(3, 8, 12, 0.94) 0%,
             rgba(3, 8, 12, 0.84) 48%,
             rgba(3, 8, 12, 0.58) 75%,
@@ -743,8 +815,7 @@
             1.3rem
           );
 
-        line-height:
-          1.5;
+        line-height: 1.5;
       }
 
       .tagline {
@@ -757,8 +828,7 @@
       }
 
       .portfolio-label {
-        max-width:
-          330px;
+        max-width: 330px;
       }
 
       .view-projects {
@@ -772,12 +842,12 @@
       }
     }
 
+
     /* =========================================
        SMALL MOBILE
     ========================================= */
 
-    @media
-    (max-width: 450px) {
+    @media (max-width: 450px) {
 
       .hero-name {
         font-size:
@@ -796,21 +866,21 @@
       }
 
       .tagline {
-        margin-top:
-          22px;
+        margin-top: 22px;
       }
     }
+
 
     /* =========================================
        ACCESSIBILITY
     ========================================= */
 
-    @media
-    (prefers-reduced-motion: reduce) {
+    @media (prefers-reduced-motion: reduce) {
 
       *,
       *::before,
       *::after {
+
         animation:
           none !important;
 
@@ -823,15 +893,19 @@
     }
 
   </style>
+
 </head>
+
 
 <body>
 
+
   <main class="home-page">
 
-    <!-- ===============================
+
+    <!-- =====================================
          BACKGROUND IMAGE
-    ================================ -->
+    ====================================== -->
 
     <div
       class="hero-background"
@@ -839,19 +913,21 @@
     ></div>
 
 
-    <!-- ===============================
+    <!-- =====================================
          BLUEPRINT DETAILS
-    ================================ -->
+    ====================================== -->
 
     <div
       class="blueprint-overlay"
       aria-hidden="true"
     ></div>
 
+
     <div
       class="technical-circle circle-one"
       aria-hidden="true"
     ></div>
+
 
     <div
       class="technical-circle circle-two"
@@ -859,9 +935,10 @@
     ></div>
 
 
-    <!-- ===============================
-         TOP LEFT BRAND
-    ================================ -->
+
+    <!-- =====================================
+         TOP LEFT JH LOGO
+    ====================================== -->
 
     <header class="top-brand">
 
@@ -875,23 +952,35 @@
     </header>
 
 
-    <!-- ===============================
-         MAIN HERO CONTENT
-    ================================ -->
+
+    <!-- =====================================
+         MAIN HOMEPAGE CONTENT
+    ====================================== -->
 
     <section
       class="hero-content"
       aria-label="Jamari Hallman Engineering Portfolio"
     >
 
+
       <div class="hero-text">
 
+
+        <!-- MAIN NAME -->
+
         <h1 class="hero-name">
+
           Jamari
+
           <br>
+
           Hallman
+
         </h1>
 
+
+
+        <!-- GOLD DIVIDER -->
 
         <div
           class="name-divider"
@@ -899,44 +988,53 @@
         ></div>
 
 
+
+        <!-- DISCIPLINES -->
+
         <p class="disciplines">
+
           Civil | Structural | VDC | BIM
+
         </p>
 
+
+
+        <!-- TAGLINE -->
 
         <p class="tagline">
+
           Design. Analyze. Build.
+
         </p>
 
+
+
+        <!-- PORTFOLIO DESCRIPTION -->
 
         <p class="portfolio-label">
+
           Civil &amp; Structural Engineering Portfolio
+
         </p>
 
 
-        <!--
-          VIEW PROJECTS LINK
 
-          This is temporary.
+        <!-- =================================
+             VIEW PROJECTS BUTTON
 
-          Later we can change:
+             FOR NOW:
+             href="#"
 
-          href="#"
-
-          to something like:
-
-          href="index.html"
-
-          or:
-
-          href="projects.html"
-        -->
+             We will connect this to your
+             existing portfolio afterward.
+        ================================== -->
 
         <a
           class="view-projects"
           href="#"
           aria-label="View Engineering Projects"
         >
+
 
           <!-- BUILDING ICON -->
 
@@ -951,31 +1049,23 @@
             aria-hidden="true"
           >
 
-            <path
-              d="M4 21V11L8 7V21"
-            />
+            <path d="M4 21V11L8 7V21" />
 
-            <path
-              d="M8 21V4L12 2V21"
-            />
+            <path d="M8 21V4L12 2V21" />
 
-            <path
-              d="M12 21V8L16 6V21"
-            />
+            <path d="M12 21V8L16 6V21" />
 
-            <path
-              d="M16 21V12L20 10V21"
-            />
+            <path d="M16 21V12L20 10V21" />
 
-            <path
-              d="M2 21H22"
-            />
+            <path d="M2 21H22" />
 
           </svg>
 
 
           <span>
+
             View Projects
+
           </span>
 
 
@@ -983,19 +1073,25 @@
             class="arrow"
             aria-hidden="true"
           >
+
             →
+
           </span>
+
 
         </a>
 
+
       </div>
+
 
     </section>
 
 
-    <!-- ===============================
-         SCROLL INDICATOR
-    ================================ -->
+
+    <!-- =====================================
+         BOTTOM SCROLL ARROW
+    ====================================== -->
 
     <div
       class="scroll-arrow"
@@ -1003,16 +1099,20 @@
     ></div>
 
 
-    <!-- ===============================
+
+    <!-- =====================================
          BOTTOM GOLD LINE
-    ================================ -->
+    ====================================== -->
 
     <div
       class="bottom-gold-line"
       aria-hidden="true"
     ></div>
 
+
   </main>
 
+
 </body>
+
 </html>
