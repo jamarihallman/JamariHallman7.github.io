@@ -14,9 +14,6 @@
 
   <title>Jamari Hallman | Civil • Structural • VDC • BIM</title>
 
-
-  <!-- GOOGLE FONT -->
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,28 +23,15 @@
     rel="stylesheet"
   >
 
-
-
   <style>
 
-    /* ==========================================================
-       GLOBAL VARIABLES
-    ========================================================== */
-
     :root {
-
       --black: #0a0a0a;
-
-      --black-soft: #121212;
-
       --white: #f5f5f2;
-
-      --white-muted: rgba(245, 245, 242, 0.72);
+      --muted-white: rgba(245, 245, 242, 0.72);
 
       --gold: #c9a227;
-
       --gold-bright: #e0b93a;
-
       --gold-border: rgba(201, 162, 39, 0.65);
 
       --font:
@@ -56,45 +40,30 @@
         BlinkMacSystemFont,
         "Segoe UI",
         sans-serif;
-
     }
 
 
-
-    /* ==========================================================
-       RESET
-    ========================================================== */
-
     * {
-
       box-sizing: border-box;
-
     }
 
 
     html,
     body {
-
       margin: 0;
-
       padding: 0;
 
       width: 100%;
-
       min-height: 100%;
-
     }
 
 
     html {
-
       scroll-behavior: smooth;
-
     }
 
 
     body {
-
       background: var(--black);
 
       color: var(--white);
@@ -104,19 +73,15 @@
       overflow-x: hidden;
 
       -webkit-font-smoothing: antialiased;
-
-      text-rendering: optimizeLegibility;
-
     }
 
 
 
-    /* ==========================================================
+    /* =========================================
        MAIN HOMEPAGE
-    ========================================================== */
+    ========================================= */
 
     .home-page {
-
       position: relative;
 
       width: 100%;
@@ -126,66 +91,34 @@
       overflow: hidden;
 
       background: #05090d;
-
     }
 
 
 
-    /* ==========================================================
-       HERO BACKGROUND IMAGE CONTAINER
-
-       IMPORTANT:
-
-       The actual image is located here:
-
-       homepage/homepage-engineering-hero.png
-
-       Since index.html is inside the SAME homepage folder,
-       the HTML only needs:
-
-       src="homepage-engineering-hero.png"
-    ========================================================== */
+    /* =========================================
+       BACKGROUND IMAGE
+    ========================================= */
 
     .hero-background {
-
       position: absolute;
 
-      top: 0;
-
-      right: 0;
-
-      bottom: 0;
-
-      left: 0;
+      inset: 0;
 
       width: 100%;
-
       height: 100%;
 
       overflow: hidden;
 
       z-index: 1;
-
-      background: #05090d;
-
     }
 
 
-
-    /* ==========================================================
-       ACTUAL IMAGE
-    ========================================================== */
-
     .hero-background img {
-
       position: absolute;
 
-      top: 0;
-
-      left: 0;
+      inset: 0;
 
       width: 100%;
-
       height: 100%;
 
       object-fit: cover;
@@ -193,22 +126,15 @@
       object-position: center center;
 
       display: block;
-
-      z-index: 1;
-
     }
 
 
 
-    /* ==========================================================
-       LEFT SIDE DARK GRADIENT
-
-       Keeps the text readable while leaving the engineering
-       image visible toward the middle and right.
-    ========================================================== */
+    /* =========================================
+       LEFT DARK GRADIENT
+    ========================================= */
 
     .hero-background::before {
-
       content: "";
 
       position: absolute;
@@ -220,35 +146,24 @@
       pointer-events: none;
 
       background:
-
         linear-gradient(
-
           90deg,
-
-          rgba(3, 8, 12, 0.97) 0%,
-
-          rgba(3, 8, 12, 0.93) 20%,
-
-          rgba(3, 8, 12, 0.78) 35%,
-
-          rgba(3, 8, 12, 0.48) 50%,
-
-          rgba(3, 8, 12, 0.16) 68%,
-
-          rgba(3, 8, 12, 0.04) 100%
-
+          rgba(3, 8, 12, 0.98) 0%,
+          rgba(3, 8, 12, 0.94) 22%,
+          rgba(3, 8, 12, 0.78) 37%,
+          rgba(3, 8, 12, 0.46) 52%,
+          rgba(3, 8, 12, 0.15) 70%,
+          rgba(3, 8, 12, 0.03) 100%
         );
-
     }
 
 
 
-    /* ==========================================================
-       CINEMATIC TOP/BOTTOM SHADING
-    ========================================================== */
+    /* =========================================
+       CINEMATIC SHADING
+    ========================================= */
 
     .hero-background::after {
-
       content: "";
 
       position: absolute;
@@ -260,29 +175,21 @@
       pointer-events: none;
 
       background:
-
         linear-gradient(
-
           180deg,
-
-          rgba(0, 0, 0, 0.13) 0%,
-
-          rgba(0, 0, 0, 0.02) 45%,
-
-          rgba(0, 0, 0, 0.26) 100%
-
+          rgba(0, 0, 0, 0.14) 0%,
+          rgba(0, 0, 0, 0.02) 46%,
+          rgba(0, 0, 0, 0.28) 100%
         );
-
     }
 
 
 
-    /* ==========================================================
+    /* =========================================
        BLUEPRINT GRID
-    ========================================================== */
+    ========================================= */
 
     .blueprint-overlay {
-
       position: absolute;
 
       inset: 0;
@@ -291,122 +198,47 @@
 
       pointer-events: none;
 
-      opacity: 0.38;
+      opacity: 0.35;
 
       background-image:
-
         linear-gradient(
-
           rgba(23, 116, 160, 0.08) 1px,
-
           transparent 1px
-
         ),
-
         linear-gradient(
-
           90deg,
-
           rgba(23, 116, 160, 0.08) 1px,
-
           transparent 1px
-
         );
 
       background-size: 72px 72px;
 
       -webkit-mask-image:
-
         linear-gradient(
-
           90deg,
-
           black 0%,
-
-          rgba(0, 0, 0, 0.9) 24%,
-
-          rgba(0, 0, 0, 0.35) 48%,
-
+          rgba(0, 0, 0, 0.9) 25%,
+          rgba(0, 0, 0, 0.3) 50%,
           transparent 70%
-
         );
 
       mask-image:
-
         linear-gradient(
-
           90deg,
-
           black 0%,
-
-          rgba(0, 0, 0, 0.9) 24%,
-
-          rgba(0, 0, 0, 0.35) 48%,
-
+          rgba(0, 0, 0, 0.9) 25%,
+          rgba(0, 0, 0, 0.3) 50%,
           transparent 70%
-
         );
-
     }
 
 
 
-    /* ==========================================================
-       TECHNICAL DESIGN CIRCLES
-    ========================================================== */
-
-    .technical-circle {
-
-      position: absolute;
-
-      border:
-
-        1px solid
-
-        rgba(0, 120, 175, 0.16);
-
-      border-radius: 50%;
-
-      pointer-events: none;
-
-      z-index: 3;
-
-    }
-
-
-    .circle-one {
-
-      width: 120px;
-
-      height: 120px;
-
-      top: 15%;
-
-      left: 5%;
-
-    }
-
-
-    .circle-two {
-
-      width: 85px;
-
-      height: 85px;
-
-      bottom: 7%;
-
-      left: 9%;
-
-    }
-
-
-
-    /* ==========================================================
-       TOP HEADER
-    ========================================================== */
+    /* =========================================
+       HEADER
+    ========================================= */
 
     .top-brand {
-
       position: relative;
 
       z-index: 10;
@@ -418,49 +250,35 @@
       align-items: center;
 
       padding:
-
         0
-
         clamp(26px, 3vw, 48px);
 
       border-bottom:
-
         1px solid
-
         var(--gold-border);
 
       background:
-
-        rgba(4, 8, 11, 0.86);
-
-      -webkit-backdrop-filter: blur(7px);
+        rgba(4, 8, 11, 0.87);
 
       backdrop-filter: blur(7px);
-
     }
 
 
 
-    /* ==========================================================
+    /* =========================================
        JH LOGO
-    ========================================================== */
+    ========================================= */
 
     .jh-logo {
-
       position: relative;
 
       color: var(--gold);
 
       font-size:
-
         clamp(
-
           2.4rem,
-
           3vw,
-
           3.3rem
-
         );
 
       font-weight: 800;
@@ -470,15 +288,10 @@
       letter-spacing: -0.08em;
 
       padding-right: 24px;
-
-      user-select: none;
-
     }
 
 
-
     .jh-logo::after {
-
       content: "";
 
       position: absolute;
@@ -492,29 +305,24 @@
       height: 52px;
 
       transform:
-
         translateY(-50%);
 
       background:
-
         var(--gold-border);
-
     }
 
 
 
-    /* ==========================================================
-       HERO CONTENT
-    ========================================================== */
+    /* =========================================
+       MAIN HERO
+    ========================================= */
 
     .hero-content {
-
       position: relative;
 
       z-index: 5;
 
       min-height:
-
         calc(100vh - 96px);
 
       display: flex;
@@ -522,53 +330,36 @@
       align-items: center;
 
       padding:
-
-        clamp(40px, 6vh, 70px)
-
+        clamp(42px, 6vh, 72px)
         clamp(26px, 5vw, 80px)
-
-        clamp(95px, 12vh, 130px);
-
+        clamp(100px, 12vh, 135px);
     }
-
 
 
     .hero-text {
-
       width:
-
         min(
-
           680px,
-
           47vw
-
         );
-
     }
 
 
 
-    /* ==========================================================
+    /* =========================================
        NAME
-    ========================================================== */
+    ========================================= */
 
     .hero-name {
-
       margin: 0;
 
       color: var(--white);
 
       font-size:
-
         clamp(
-
-          4.5rem,
-
-          7.3vw,
-
-          8.4rem
-
+          4.6rem,
+          7.4vw,
+          8.5rem
         );
 
       line-height: 0.89;
@@ -580,218 +371,152 @@
       text-transform: uppercase;
 
       text-shadow:
-
-        0 5px 20px
-
-        rgba(0, 0, 0, 0.35);
+        0 5px 22px
+        rgba(0, 0, 0, 0.38);
 
       animation:
-
         fadeUp
-
         0.9s
-
         ease
-
         both;
-
     }
 
 
 
-    /* ==========================================================
-       GOLD DIVIDER UNDER NAME
-    ========================================================== */
+    /* =========================================
+       GOLD DIVIDER
+    ========================================= */
 
     .name-divider {
-
       width: 88px;
 
       height: 4px;
 
       margin:
-
         30px
-
         0
-
         24px;
 
       background:
-
         linear-gradient(
-
           90deg,
-
           var(--gold),
-
           var(--gold-bright)
-
         );
-
     }
 
 
 
-    /* ==========================================================
-       CIVIL | STRUCTURAL | VDC | BIM
-    ========================================================== */
+    /* =========================================
+       DISCIPLINES
+    ========================================= */
 
     .disciplines {
-
       margin: 0;
 
       color: var(--gold);
 
       font-size:
-
         clamp(
-
-          1.2rem,
-
-          1.75vw,
-
-          1.75rem
-
+          1.18rem,
+          1.7vw,
+          1.72rem
         );
 
       font-weight: 700;
 
       letter-spacing: 0.04em;
 
-      line-height: 1.4;
-
       text-transform: uppercase;
+
+      line-height: 1.4;
 
       white-space: nowrap;
 
       animation:
-
         fadeUp
-
         0.9s
-
         0.1s
-
         ease
-
         both;
-
     }
 
 
 
-    /* ==========================================================
-       DESIGN. ANALYZE. BUILD.
-    ========================================================== */
+    /* =========================================
+       TAGLINE
+    ========================================= */
 
     .tagline {
-
       margin:
-
         28px
-
         0
-
         0;
 
       color: var(--white);
 
       font-size:
-
         clamp(
-
           1.15rem,
-
           1.55vw,
-
           1.55rem
-
         );
 
       font-weight: 700;
 
       letter-spacing: 0.11em;
 
-      line-height: 1.4;
-
       text-transform: uppercase;
 
       animation:
-
         fadeUp
-
         0.9s
-
         0.18s
-
         ease
-
         both;
-
     }
 
 
 
-    /* ==========================================================
+    /* =========================================
        PORTFOLIO LABEL
-    ========================================================== */
+    ========================================= */
 
     .portfolio-label {
-
       margin:
-
         13px
-
         0
-
         0;
 
-      color:
-
-        var(--white-muted);
+      color: var(--muted-white);
 
       font-size:
-
         clamp(
-
           0.98rem,
-
           1.15vw,
-
           1.15rem
-
         );
-
-      line-height: 1.5;
 
       font-weight: 400;
 
+      line-height: 1.5;
+
       animation:
-
         fadeUp
-
         0.9s
-
         0.26s
-
         ease
-
         both;
-
     }
 
 
 
-    /* ==========================================================
-       VIEW PROJECTS BUTTON
-    ========================================================== */
+    /* =========================================
+       VIEW PROJECTS
+    ========================================= */
 
     .view-projects {
-
       margin-top: 34px;
-
-      width: fit-content;
 
       display: inline-flex;
 
@@ -802,29 +527,20 @@
       gap: 17px;
 
       padding:
-
         19px
-
         28px;
 
       background:
-
         linear-gradient(
-
           135deg,
-
           var(--gold-bright),
-
           var(--gold)
-
         );
 
       color: var(--black);
 
       border:
-
         1px solid
-
         var(--gold-bright);
 
       border-radius: 4px;
@@ -840,119 +556,83 @@
       letter-spacing: 0.035em;
 
       box-shadow:
-
         0 12px 30px
-
         rgba(201, 162, 39, 0.14);
 
       transition:
-
         transform 0.25s ease,
-
         box-shadow 0.25s ease,
-
         filter 0.25s ease;
 
       animation:
-
         fadeUp
-
         0.9s
-
         0.34s
-
         ease
-
         both;
-
     }
-
 
 
     .view-projects:hover {
-
       transform:
-
         translateY(-3px);
 
       filter:
-
         brightness(1.07);
 
       box-shadow:
-
         0 15px 35px
-
-        rgba(201, 162, 39, 0.26);
-
+        rgba(201, 162, 39, 0.27);
     }
-
 
 
     .view-projects:focus-visible {
-
       outline:
-
         2px solid
-
         var(--white);
 
       outline-offset: 4px;
-
     }
 
 
 
-    /* ==========================================================
-       BUILDING ICON
-    ========================================================== */
+    /* =========================================
+       BUTTON ICON
+    ========================================= */
 
     .building-icon {
-
       width: 26px;
 
       height: 26px;
 
       flex-shrink: 0;
-
     }
 
 
-
     .arrow {
-
       font-size: 1.45rem;
 
       line-height: 1;
 
       transition:
-
         transform
-
         0.25s
-
         ease;
-
     }
-
 
 
     .view-projects:hover .arrow {
-
       transform:
-
         translateX(5px);
-
     }
 
 
 
-    /* ==========================================================
-       BOTTOM DOWN ARROW
-    ========================================================== */
+    /* =========================================
+       BOTTOM ARROW
+    ========================================= */
 
     .scroll-arrow {
-
       position: absolute;
 
       left: 50%;
@@ -966,43 +646,31 @@
       height: 28px;
 
       border-right:
-
         4px solid
-
         var(--gold);
 
       border-bottom:
-
         4px solid
-
         var(--gold);
 
       transform:
-
         translateX(-50%)
-
         rotate(45deg);
 
       animation:
-
         scrollBounce
-
         1.8s
-
         ease-in-out
-
         infinite;
-
     }
 
 
 
-    /* ==========================================================
+    /* =========================================
        BOTTOM GOLD LINE
-    ========================================================== */
+    ========================================= */
 
     .bottom-gold-line {
-
       position: absolute;
 
       left: 0;
@@ -1016,386 +684,267 @@
       z-index: 10;
 
       background:
-
         var(--gold-border);
-
     }
 
 
 
-    /* ==========================================================
+    /* =========================================
        ANIMATIONS
-    ========================================================== */
+    ========================================= */
 
     @keyframes fadeUp {
 
       from {
-
         opacity: 0;
 
         transform:
-
           translateY(20px);
-
       }
 
-
       to {
-
         opacity: 1;
 
         transform:
-
           translateY(0);
-
       }
 
     }
-
 
 
     @keyframes scrollBounce {
 
       0%,
       100% {
-
         margin-bottom: 6px;
-
         opacity: 0.55;
-
       }
 
-
       50% {
-
         margin-bottom: -1px;
-
         opacity: 1;
-
       }
 
     }
 
 
 
-    /* ==========================================================
+    /* =========================================
        TABLET
-    ========================================================== */
+    ========================================= */
 
     @media (max-width: 1050px) {
 
       .hero-text {
-
         width:
-
           min(
-
             620px,
-
             54vw
-
           );
-
       }
 
 
       .disciplines {
-
         white-space: normal;
-
       }
 
 
       .hero-background img {
-
         object-position:
-
           58% center;
-
       }
 
     }
 
 
 
-    /* ==========================================================
+    /* =========================================
        MOBILE
-    ========================================================== */
+    ========================================= */
 
     @media (max-width: 760px) {
 
       .top-brand {
-
         height: 78px;
 
         padding:
-
           0
-
           20px;
-
       }
 
 
       .jh-logo {
-
         font-size: 2.25rem;
 
         padding-right: 18px;
-
       }
 
 
       .jh-logo::after {
-
         height: 40px;
-
       }
 
 
       .hero-content {
-
         min-height:
-
           calc(100vh - 78px);
 
         padding:
-
           58px
-
           22px
-
           105px;
 
         align-items: center;
-
       }
 
 
       .hero-text {
-
         width: 100%;
-
       }
 
 
       .hero-background img {
-
         object-position:
-
           63% center;
-
       }
 
 
       .hero-background::before {
-
         background:
-
           linear-gradient(
-
             90deg,
-
             rgba(3, 8, 12, 0.94) 0%,
-
             rgba(3, 8, 12, 0.84) 48%,
-
             rgba(3, 8, 12, 0.58) 75%,
-
             rgba(3, 8, 12, 0.38) 100%
-
           );
-
       }
 
 
       .hero-name {
-
         font-size:
-
           clamp(
-
             3.6rem,
-
             16vw,
-
             6rem
-
           );
-
       }
 
 
       .disciplines {
-
         font-size:
-
           clamp(
-
             1rem,
-
             4.5vw,
-
             1.3rem
-
           );
 
         line-height: 1.5;
-
       }
 
 
       .tagline {
-
         font-size:
-
           clamp(
-
             1rem,
-
             4.3vw,
-
             1.2rem
-
           );
-
       }
 
 
       .portfolio-label {
-
         max-width: 330px;
-
       }
 
 
       .view-projects {
-
         padding:
-
           17px
-
           22px;
-
       }
 
 
       .scroll-arrow {
-
         bottom: 25px;
-
       }
 
     }
 
 
 
-    /* ==========================================================
-       SMALL PHONES
-    ========================================================== */
+    /* =========================================
+       SMALL MOBILE
+    ========================================= */
 
     @media (max-width: 450px) {
 
       .hero-name {
-
         font-size:
-
           clamp(
-
             3.1rem,
-
             15vw,
-
             4.7rem
-
           );
-
       }
 
 
       .name-divider {
-
         margin:
-
           24px
-
           0
-
           20px;
-
       }
 
 
       .tagline {
-
         margin-top: 22px;
-
       }
 
 
       .view-projects {
-
         width: 100%;
 
         max-width: 280px;
-
       }
 
     }
 
 
 
-    /* ==========================================================
+    /* =========================================
        REDUCED MOTION
-    ========================================================== */
+    ========================================= */
 
     @media (prefers-reduced-motion: reduce) {
 
       *,
       *::before,
       *::after {
-
         animation:
-
           none !important;
 
         transition:
-
           none !important;
 
         scroll-behavior:
-
           auto !important;
-
       }
 
     }
-
 
   </style>
 
 </head>
 
 
-
 <body>
-
 
 
   <main class="home-page">
 
 
-
-    <!-- ======================================================
-         HOMEPAGE ENGINEERING BACKGROUND IMAGE
-
-         FILE LOCATION:
-
-         /homepage/homepage-engineering-hero.png
-
-         Because this index.html is also inside /homepage/,
-         the file path below is intentionally simple.
-    ======================================================= -->
+    <!-- BACKGROUND IMAGE -->
 
     <div
       class="hero-background"
@@ -1411,9 +960,7 @@
 
 
 
-    <!-- ======================================================
-         BLUEPRINT GRID
-    ======================================================= -->
+    <!-- BLUEPRINT OVERLAY -->
 
     <div
       class="blueprint-overlay"
@@ -1422,26 +969,7 @@
 
 
 
-    <!-- ======================================================
-         TECHNICAL CIRCLES
-    ======================================================= -->
-
-    <div
-      class="technical-circle circle-one"
-      aria-hidden="true"
-    ></div>
-
-
-    <div
-      class="technical-circle circle-two"
-      aria-hidden="true"
-    ></div>
-
-
-
-    <!-- ======================================================
-         HEADER
-    ======================================================= -->
+    <!-- HEADER -->
 
     <header class="top-brand">
 
@@ -1449,18 +977,14 @@
         class="jh-logo"
         aria-label="JH"
       >
-
         JH
-
       </div>
 
     </header>
 
 
 
-    <!-- ======================================================
-         MAIN HERO CONTENT
-    ======================================================= -->
+    <!-- MAIN HERO -->
 
     <section
       class="hero-content"
@@ -1470,9 +994,6 @@
 
       <div class="hero-text">
 
-
-
-        <!-- NAME -->
 
         <h1 class="hero-name">
 
@@ -1486,16 +1007,12 @@
 
 
 
-        <!-- GOLD DIVIDER -->
-
         <div
           class="name-divider"
           aria-hidden="true"
         ></div>
 
 
-
-        <!-- DISCIPLINES -->
 
         <p class="disciplines">
 
@@ -1505,8 +1022,6 @@
 
 
 
-        <!-- ENGINEERING TAGLINE -->
-
         <p class="tagline">
 
           DESIGN. ANALYZE. BUILD.
@@ -1514,8 +1029,6 @@
         </p>
 
 
-
-        <!-- PORTFOLIO TITLE -->
 
         <p class="portfolio-label">
 
@@ -1525,23 +1038,12 @@
 
 
 
-        <!-- ==================================================
-             VIEW PROJECTS BUTTON
-
-             We are intentionally leaving href="#"
-             until you decide exactly where the project
-             navigation should go.
-        =================================================== -->
-
         <a
           class="view-projects"
           href="#"
           aria-label="View Engineering Projects"
         >
 
-
-
-          <!-- BUILDING ICON -->
 
           <svg
             class="building-icon"
@@ -1567,13 +1069,11 @@
           </svg>
 
 
-
           <span>
 
             VIEW PROJECTS
 
           </span>
-
 
 
           <span
@@ -1596,9 +1096,7 @@
 
 
 
-    <!-- ======================================================
-         DOWN ARROW
-    ======================================================= -->
+    <!-- BOTTOM ARROW -->
 
     <div
       class="scroll-arrow"
@@ -1607,9 +1105,7 @@
 
 
 
-    <!-- ======================================================
-         BOTTOM GOLD LINE
-    ======================================================= -->
+    <!-- BOTTOM GOLD LINE -->
 
     <div
       class="bottom-gold-line"
@@ -1617,9 +1113,7 @@
     ></div>
 
 
-
   </main>
-
 
 
 </body>
