@@ -2,121 +2,264 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Residential Building Structural Modeling &amp; Construction Schedule | Jamari Hallman</title>
 <style>
-  body { font-family: -apple-system, Helvetica, Arial, sans-serif; background: #0c0b09; margin: 0; color: #f2ede2; }
-  .wrap { max-width: 1300px; margin: 0 auto; padding: 60px 48px; }
-  .back { display: inline; color: #8a7b5c; text-decoration: none; font-size: 13px; }
-  .back:hover { text-decoration: underline; }
-  .tag { display: inline-block; font-size: 10px; color: #c9a24b; border: 1px solid #4a3f28; border-radius: 999px; padding: 3px 10px; margin-left: 8px; }
+  :root{
+    --gold:#c9a227;
+    --gold-bright:#e0b93a;
+    --black:#020202;
+    --border:#332a1a;
+    --text-body:#d8d2c2;
+    --text-muted:#a89a83;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:-apple-system, Helvetica, Arial, sans-serif;
+    background-color:var(--black);
+    background-image:
+      radial-gradient(circle at 15% 0%, rgba(201,162,75,0.07) 0%, transparent 40%),
+      linear-gradient(rgba(201,162,75,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,162,75,0.04) 1px, transparent 1px);
+    background-size:auto, 46px 46px, 46px 46px;
+    color:#f2ede2;
+  }
+  .wrap{max-width:1200px;margin:0 auto;padding:0 48px 70px;}
 
-  h1 { font-size: 28px; font-weight: 700; color: #f2ede2; margin: 20px 0 6px; }
-  .subtitle { font-size: 14px; color: #a89a83; margin: 0 0 40px; }
+  /* Nav */
+  .navbar{
+    display:flex; align-items:center; gap:16px;
+    padding:18px 48px;
+    border-bottom:2px solid var(--gold);
+  }
+  .navbar img{height:40px;display:block;}
+  .navbar .divider{width:1px;height:34px;background:rgba(255,255,255,0.25);}
+  .navbar .brand-name{font-size:19px;font-weight:700;letter-spacing:1px;color:#fff;line-height:1.2;}
+  .navbar .brand-tags{font-size:11px;font-weight:600;letter-spacing:1.5px;color:var(--gold-bright);margin-top:2px;}
 
-  .pic-caption { font-size: 12.5px; font-weight: 600; color: #c9a24b; text-transform: uppercase; letter-spacing: 0.04em; margin: 10px 0 0; }
+  /* Hero */
+  .hero{
+    position:relative;
+    margin-top:26px;
+    border-radius:10px;
+    overflow:hidden;
+    border:1px solid var(--border);
+    min-height:400px;
+    display:flex;
+    align-items:flex-end;
+  }
+  .hero-bg{
+    position:absolute; top:0; right:0; bottom:0; left:0;
+    background-image:url('blueprint-hero.jpg');
+    background-size:cover;
+    background-position:center;
+  }
+  .hero-fade{
+    position:absolute; top:0; right:0; bottom:0; left:0;
+    background:linear-gradient(0deg, rgba(2,2,2,0.98) 0%, rgba(2,2,2,0.82) 40%, rgba(2,2,2,0.3) 72%, rgba(2,2,2,0.05) 100%);
+  }
+  .hero-house{
+    position:absolute; bottom:0; right:2%; width:38%; max-width:420px;
+    z-index:1; pointer-events:none;
+  }
+  .hero-content{position:relative; z-index:2; padding:40px 44px;}
+  .back{color:var(--text-muted); text-decoration:none; font-size:13px; display:inline-block; margin-bottom:18px;}
+  .back:hover{text-decoration:underline;}
+  .eyebrow{font-size:12px; font-weight:700; letter-spacing:2px; color:var(--gold-bright); margin:0 0 8px;}
+  .hero-title{font-size:34px; font-weight:800; line-height:1.1; margin:0 0 10px; color:#fff; max-width:560px;}
+  .hero-sub{font-size:15px; font-weight:600; color:var(--gold-bright); margin:0 0 14px;}
+  .hero-desc{font-size:14px; color:var(--text-body); max-width:520px; line-height:1.6; margin:0;}
 
-  .hero-block { text-align: center; margin: 0 auto 72px; max-width: 640px; }
-  .pic-hero { width: 100%; max-width: 460px; aspect-ratio: 1187 / 1113; object-fit: cover; border-radius: 8px; border: 1px solid #4a3f28; display: inline-block; }
-  .pic-title { font-size: 17px; font-weight: 600; color: #c9a24b; margin: 10px 0 10px; }
-  .hero-cap { font-size: 14px; line-height: 1.7; color: #d8d2c2; margin: 0 auto; }
-  .hero-block .pic-caption { text-align: center; }
+  /* Stat strip */
+  .stats{
+    display:flex; justify-content:space-between;
+    margin-top:36px; padding:26px 10px;
+    border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+  }
+  .stat{text-align:center; flex:1;}
+  .stat .num{font-size:18px; font-weight:800; color:#fff; letter-spacing:0.5px;}
+  .stat .lbl{font-size:12px; color:var(--text-muted); margin-top:4px;}
+  .stat-icon{font-size:20px; color:var(--gold); margin-bottom:8px;}
 
-  .section-offset { display: grid; grid-template-columns: 3fr 2fr; gap: 40px; align-items: start; margin-bottom: 72px; }
-  .section-offset .media-col { margin-top: 32px; }
-  .pic-large { width: 100%; height: 340px; border-radius: 8px; border: 1px solid #4a3f28; display: block; background: #f2ede2; object-fit: contain; }
+  .section-label{font-size:13px; font-weight:700; letter-spacing:1.5px; color:var(--gold-bright); text-transform:uppercase; border-bottom:1px solid var(--border); padding-bottom:10px; margin-bottom:16px;}
+  .section-label .sub{color:var(--text-muted); font-weight:400; letter-spacing:0; text-transform:none; font-size:12.5px; float:right;}
 
-  .section-centered { text-align: center; margin: 0 auto 72px; max-width: 780px; }
-  .section-centered .media-frame { max-width: 560px; margin: 0 auto 0; }
-  .section-centered .section-text { text-align: left; }
-  .pdf-site { width: 100%; height: 375px; border-radius: 8px; border: 1px solid #4a3f28; display: block; }
+  /* Progression timeline */
+  .progression{margin-top:52px;}
+  .step-row{display:flex; gap:28px; margin-bottom:36px;}
+  .step-rail{width:44px; display:flex; flex-direction:column; align-items:center; flex-shrink:0;}
+  .step-num{
+    width:40px; height:40px; border-radius:50%; background:var(--gold);
+    color:var(--black); font-weight:800; font-size:15px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .step-line{width:2px; flex:1; background:var(--border); margin-top:8px;}
+  .step-row:last-child .step-line{display:none;}
+  .step-media{flex:1.3;}
+  .step-media img{width:100%; border-radius:8px; border:1px solid var(--border); display:block; object-fit:cover; height:220px;}
+  .step-text{flex:1; padding-top:4px;}
+  .step-title{font-size:15px; font-weight:700; color:var(--gold-bright); text-transform:uppercase; letter-spacing:0.5px; margin:0 0 4px;}
+  .step-subtitle{font-size:12.5px; color:var(--text-muted); margin:0 0 12px;}
+  .step-list{list-style:none; margin:0; padding:0;}
+  .step-list li{font-size:13px; color:var(--text-body); padding:4px 0 4px 20px; position:relative; line-height:1.5;}
+  .step-list li::before{content:"○"; position:absolute; left:0; top:4px; color:var(--gold); font-size:10px;}
 
-  .section-offset.reverse { grid-template-columns: 2fr 3fr; }
-  .section-offset.reverse .media-col { order: 2; margin-top: 0; }
-  .section-offset.reverse .text-col { order: 1; margin-top: 40px; }
-  .pdf-floor { width: 100%; height: 395px; border-radius: 8px; border: 1px solid #4a3f28; display: block; }
+  /* Schedule section */
+  .schedule-row{display:flex; gap:40px; margin-top:52px;}
+  .schedule-row .chart-col{flex:1.4;}
+  .schedule-row .summary-col{flex:1;}
+  .chart-frame img{width:100%; border-radius:8px; border:1px solid var(--border); display:block;}
+  .schedule-nums{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:24px;}
+  .sched-box{border:1px solid var(--border); border-radius:8px; padding:16px; text-align:center;}
+  .sched-box .n{font-size:22px; font-weight:800; color:#fff;}
+  .sched-box .l{font-size:11.5px; color:var(--text-muted); margin-top:2px;}
 
-  .section-title { font-size: 16px; font-weight: 600; color: #c9a24b; text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 12px; }
-  .section-text { font-size: 14.5px; line-height: 1.8; color: #d8d2c2; margin: 0; }
+  .overview-text{font-size:14px; line-height:1.8; color:var(--text-body); margin:0 0 20px;}
+  .check-list{list-style:none; margin:0; padding:0;}
+  .check-list li{font-size:13px; color:var(--text-body); padding:5px 0 5px 22px; position:relative; line-height:1.5;}
+  .check-list li::before{content:"✓"; position:absolute; left:0; top:5px; color:var(--gold); font-weight:700;}
 
-  h2 { font-size: 15px; color: #c9a24b; text-transform: uppercase; letter-spacing: 0.05em; margin: 40px 0 12px; }
-  p.body { font-size: 14px; line-height: 1.7; color: #d8d2c2; margin: 0; }
-
-  .footer-back { margin-top: 64px; padding-top: 24px; border-top: 1px solid #4a3f28; text-align: center; }
-
-  @media (max-width: 760px) {
-    .wrap { padding: 40px 24px; }
-    .section-offset, .section-offset.reverse {
-      grid-template-columns: 1fr;
-      gap: 24px;
-    }
-    .section-offset .media-col, .section-offset.reverse .media-col { order: initial; margin-top: 0; }
-    .section-offset.reverse .text-col { order: initial; margin-top: 0; }
+  /* Footer */
+  .footer-tag{
+    text-align:center; margin-top:60px; padding-top:24px;
+    border-top:1px solid var(--border);
+    font-size:12px; letter-spacing:3px; color:var(--text-muted); text-transform:uppercase;
   }
 </style>
 </head>
 <body>
+
+<nav class="navbar">
+  <img src="jh-logo.png" alt="JH">
+  <div class="divider"></div>
+  <div>
+    <div class="brand-name">JAMARI HALLMAN</div>
+    <div class="brand-tags">CIVIL · STRUCTURAL · VDC · BIM</div>
+  </div>
+</nav>
+
 <div class="wrap">
 
-  <a class="back" href="../structural-design.html">&larr; Back to Structural Design</a>
-  <span class="tag">Academic Project</span>
-
-  <h1>Residential Building Structural Modeling &amp; Construction Schedule</h1>
-  <p class="subtitle">Academic Project | Construction Engineering / BIM &amp; Project Controls</p>
-
-  <div class="hero-block">
-    <img class="pic-hero" src="residential-schedule-1.jpg" alt="Two story residential building overview">
-    <p class="pic-title">From Blueprint to Build Plan</p>
-    <p class="pic-caption">Overall Site &amp; Building Overview</p>
-    <p class="hero-cap">A 26 ft &times; 30 ft, two-story residential building developed on a 30 ft &times; 40 ft lot in Charlotte, NC, as provided in the assignment brief. Green Construction Company's architects finalized this design, and my role as project manager was to review it and translate it into a coordinated Primavera P6 construction schedule using the accompanying site and floor plans.</p>
-  </div>
-
-  <div class="section-offset">
-    <div class="media-col">
-      <img class="pic-large" src="residential-schedule-2.jpg" alt="Primavera P6 construction schedule chart">
-      <p class="pic-caption">Primavera P6 Construction Schedule</p>
-    </div>
-    <div class="text-col">
-      <p class="section-title">Construction Schedule</p>
-      <p class="section-text">The Primavera P6 schedule established a 66-day construction sequence broken into a 50-day substructure phase, a 14-day Level 1 phase, and a 2-day Level 2 phase. Excavation and brickwork alone accounted for 47 of the 50 substructure days, making them the activities that governed how quickly framing above could begin. Every activity in the schedule carries zero total float, meaning there was no slack anywhere in the sequence and any delay to an early activity would push the entire 66-day completion date back.</p>
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-fade"></div>
+    <img class="hero-house" src="house-cutout.jpg" alt="">
+    <div class="hero-content">
+      <a class="back" href="../structural-design.html">&larr; Back to Structural Design</a>
+      <p class="eyebrow">ACADEMIC PROJECT</p>
+      <h1 class="hero-title">Residential Building Structural Modeling &amp; Construction Schedule</h1>
+      <p class="hero-sub">From Drawings to a Buildable Plan</p>
+      <p class="hero-desc">Academic Project | Construction Engineering, BIM &amp; Project Controls</p>
     </div>
   </div>
 
-  <div class="section-centered">
-    <div class="media-frame">
-      <embed class="pdf-site" src="residential-schedule-3.pdf" type="application/pdf">
-      <p class="pic-caption">Site Plan, 11 x 17</p>
-    </div>
-    <p class="section-title" style="margin-top: 28px;">Site Plan</p>
-    <p class="section-text">The site plan establishes the building's placement on the 30 ft &times; 40 ft lot, including setbacks, vehicle and pedestrian access, and the fenced site boundary shown in the assignment drawings. Reviewing this plan alongside the schedule made clear how the site's fixed dimensions constrained staging and access during the substructure phase, when excavation and brickwork activities needed room to proceed without interfering with the rest of the lot.</p>
+  <div class="stats">
+    <div class="stat"><div class="stat-icon">&#8962;</div><div class="num">26' &times; 30'</div><div class="lbl">Building Footprint</div></div>
+    <div class="stat"><div class="stat-icon">&#9635;</div><div class="num">30' &times; 40'</div><div class="lbl">Site Lot</div></div>
+    <div class="stat"><div class="stat-icon">&#128197;</div><div class="num">66 DAYS</div><div class="lbl">Total Duration</div></div>
+    <div class="stat"><div class="stat-icon">&#128202;</div><div class="num">PRIMAVERA P6</div><div class="lbl">Construction Schedule</div></div>
   </div>
 
-  <div class="section-offset reverse">
-    <div class="text-col">
-      <p class="section-title">Second Floor Plan</p>
-      <p class="section-text">The second floor plan lays out the upper level's room arrangement and the structural bearing points that carry down to the framing below. Coordinating this layout with the ground floor plan was necessary to confirm that column and beam locations lined up consistently between levels, since misaligned bearing points at Level 2 would have created load path problems for the Level 1 framing scheduled ahead of it.</p>
+  <div class="progression">
+    <p class="section-label">Design &amp; Model Progression <span class="sub">From provided design &rarr; to my structural model</span></p>
+
+    <div class="step-row">
+      <div class="step-rail"><div class="step-num">01</div><div class="step-line"></div></div>
+      <div class="step-media"><img src="step1-provided-design.jpg" alt="Provided architectural design"></div>
+      <div class="step-text">
+        <p class="step-title">Provided Design</p>
+        <p class="step-subtitle">Architectural Drawings &amp; Project Brief</p>
+        <ul class="step-list">
+          <li>Original architectural design</li>
+          <li>Floor plans, elevations, and dimensions</li>
+          <li>26' &times; 30' two-story building on 30' &times; 40' lot</li>
+          <li>2 bedrooms | 2 stories | Charlotte, NC</li>
+        </ul>
+      </div>
     </div>
-    <div class="media-col">
-      <embed class="pdf-floor" src="residential-schedule-4.pdf" type="application/pdf">
-      <p class="pic-caption">Second Floor Plan, 11 x 17</p>
+
+    <div class="step-row">
+      <div class="step-rail"><div class="step-num">02</div><div class="step-line"></div></div>
+      <div class="step-media"><img src="step2-substructure.jpg" alt="Substructure model"></div>
+      <div class="step-text">
+        <p class="step-title">Substructure Model</p>
+        <p class="step-subtitle">Developed in Revit (Modeled by Jamari Hallman)</p>
+        <ul class="step-list">
+          <li>Foundation and structural system layout</li>
+          <li>Columns, footings, and retaining elements</li>
+          <li>Coordinated with architectural design</li>
+          <li>Established structural base for Level 1</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="step-row">
+      <div class="step-rail"><div class="step-num">03</div><div class="step-line"></div></div>
+      <div class="step-media"><img src="step3-level1.jpg" alt="Level 1 structural model"></div>
+      <div class="step-text">
+        <p class="step-title">Level 1 Structural Model</p>
+        <p class="step-subtitle">Framing &amp; Structural Development</p>
+        <ul class="step-list">
+          <li>Upper level column and beam placement</li>
+          <li>Floor framing and slab layout</li>
+          <li>Coordinated with floor plan and dimensions</li>
+          <li>Validated structural alignment from substructure</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="step-row">
+      <div class="step-rail"><div class="step-num">04</div></div>
+      <div class="step-media"><img src="step4-level2roof.jpg" alt="Level 2 and roof model"></div>
+      <div class="step-text">
+        <p class="step-title">Level 2 + Roof Model</p>
+        <p class="step-subtitle">Completed Structural Model (Modeled by Jamari Hallman)</p>
+        <ul class="step-list">
+          <li>Final level framing and roof structure</li>
+          <li>Completed full two-story structural model</li>
+          <li>Matched architectural design and dimensions</li>
+          <li>Ready for construction sequencing</li>
+        </ul>
+      </div>
     </div>
   </div>
 
-  <h2>Project Overview</h2>
-  <p class="body">This academic construction-engineering assignment placed me in the role of Project Manager for a 26 ft &times; 30 ft, two-story residential building on a 30 ft &times; 40 ft site in Charlotte, NC. I reviewed the provided architectural design, site plan, and floor plans, and independently developed a Primavera P6 construction schedule reflecting a 66-day planned construction sequence.</p>
-
-  <h2>Design Considerations</h2>
-  <p class="body">The construction schedule required logical sequencing from substructure work through Level 1, Level 2, and roof completion, coordinated against the site plan and floor plans provided for the project. With excavation programmed for 17 days and brickwork for 30 days, early substructure activities represented a substantial portion of the 66-day schedule and directly influenced when subsequent building work could begin.</p>
-
-  <h2>Design Approach</h2>
-  <p class="body">I organized the project into three primary construction phases, Substructure, Level 1, and Level 2, and sequenced Primavera P6 activities to reflect the building's actual layout as shown in the site and floor plans. This approach connected the provided design information to a logical construction sequence, demonstrating how project documentation supports work breakdown, activity planning, and construction scheduling.</p>
-
-  <h2>Project Summary</h2>
-  <p class="body">This project demonstrates my ability to work across design documentation and project-controls environments by connecting a provided building design with a 66-day construction schedule. It strengthened my understanding of the relationship between site conditions, floor layout, construction sequencing, predecessor-dependent activities, and overall project duration.</p>
-
-  <div class="footer-back">
-    <a class="back" href="../structural-design.html">&larr; Back to Structural Design</a>
+  <div class="schedule-row">
+    <div class="chart-col">
+      <p class="section-label">Construction Schedule &mdash; Primavera P6</p>
+      <div class="chart-frame"><img src="p6-schedule.jpg" alt="Primavera P6 construction schedule chart"></div>
+    </div>
+    <div class="summary-col">
+      <p class="section-label">Schedule Summary</p>
+      <div class="schedule-nums">
+        <div class="sched-box"><div class="n">66</div><div class="l">Days Total</div></div>
+        <div class="sched-box"><div class="n">50</div><div class="l">Substructure</div></div>
+        <div class="sched-box"><div class="n">14</div><div class="l">Level 1</div></div>
+        <div class="sched-box"><div class="n">2</div><div class="l">Level 2</div></div>
+        <div class="sched-box" style="grid-column:1 / -1;"><div class="n">0</div><div class="l">Total Float</div></div>
+      </div>
+    </div>
   </div>
+
+  <div class="schedule-row" style="margin-top:8px;">
+    <div class="chart-col">
+      <p class="section-label">Project Overview</p>
+      <p class="overview-text">Developed a coordinated structural model and a 66-day construction schedule for a 26' &times; 30' two-story residential building on a 30' &times; 40' lot in Charlotte, NC, integrating design drawings, site plan, and floor plans.</p>
+    </div>
+    <div class="summary-col">
+      <p class="section-label">Key Highlights</p>
+      <ul class="check-list">
+        <li>Modeled structural system (Revit)</li>
+        <li>Coordinated with architectural plans</li>
+        <li>Created 66-day construction schedule</li>
+        <li>Integrated site, structure, and sequencing</li>
+        <li>Zero total float (no schedule slack)</li>
+        <li>Demonstrated BIM &amp; project controls skills</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-tag">Plans Create Buildings. People Bring Them to Life.</div>
 
 </div>
 </body>
