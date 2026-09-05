@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jamari Hallman | Civil &amp; Structural Engineering Portfolio</title>
+<style>
+  :root{
+    --gold:#c9a227;
+    --gold-bright:#e0b93a;
+    --black:#0a0a0a;
+    --near-black:#0d1117;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  body{
+    font-family:'Helvetica Neue', Arial, sans-serif;
+    background:var(--black);
+    color:#fff;
+  }
+
+  .navbar{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    padding:18px 40px;
+    background:var(--black);
+    border-bottom:2px solid var(--gold);
+  }
+
+  .navbar .mark{
+    font-size:28px;
+    font-weight:800;
+    letter-spacing:1px;
+    line-height:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:40px;
+    height:40px;
+  }
+  .navbar .mark .j{color:var(--gold-bright);}
+  .navbar .mark .h{color:#fff;}
+
+  .navbar .divider{
+    width:1px;
+    height:34px;
+    background:rgba(255,255,255,0.25);
+  }
+
+  .navbar .brand-name{
+    font-size:20px;
+    font-weight:700;
+    letter-spacing:1px;
+    color:#fff;
+    line-height:1.2;
+  }
+
+  .navbar .brand-tags{
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:1.5px;
+    color:var(--gold-bright);
+    margin-top:2px;
+  }
+
+  .hero{
+    position:relative;
+    min-height:calc(100vh - 78px);
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+    background:var(--near-black);
+  }
+
+  .hero::before{
+    content:"";
+    position:absolute;
+    top:0; right:0; bottom:0; left:0;
+    background-image:url('assets/images/hero-building.jpg');
+    background-size:cover;
+    background-position:center right;
+  }
+
+  .hero::after{
+    content:"";
+    position:absolute;
+    top:0; right:0; bottom:0; left:0;
+    background:linear-gradient(90deg, rgba(10,10,10,0.97) 0%, rgba(10,10,10,0.88) 30%, rgba(10,10,10,0.35) 58%, rgba(10,10,10,0.05) 78%);
+  }
+
+  .hero-content{
+    position:relative;
+    z-index:2;
+    max-width:640px;
+    padding:0 60px;
+  }
+
+  .hero-name{
+    font-size:76px;
+    font-weight:800;
+    line-height:1.02;
+    letter-spacing:1px;
+    color:#fff;
+    text-transform:uppercase;
+  }
+
+  .hero-divider{
+    width:70px;
+    height:4px;
+    background:var(--gold);
+    margin:26px 0;
+  }
+
+  .hero-disciplines{
+    font-size:22px;
+    font-weight:700;
+    letter-spacing:1px;
+    color:var(--gold-bright);
+    text-transform:uppercase;
+    margin-bottom:22px;
+  }
+
+  .hero-tagline{
+    font-size:26px;
+    font-weight:700;
+    letter-spacing:1px;
+    color:#fff;
+    text-transform:uppercase;
+    margin-bottom:8px;
+  }
+
+  .hero-subtitle{
+    font-size:16px;
+    font-weight:400;
+    color:#d8d8d8;
+    margin-bottom:36px;
+  }
+
+  .cta-button{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    background:var(--gold);
+    color:var(--black);
+    font-size:15px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    text-decoration:none;
+    padding:16px 28px;
+    border-radius:2px;
+    transition:background 0.2s ease;
+  }
+
+  .cta-button:hover{
+    background:var(--gold-bright);
+  }
+
+  .cta-button svg{
+    width:18px;
+    height:18px;
+  }
+
+  .scroll-cue{
+    position:absolute;
+    bottom:24px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:2;
+    color:var(--gold);
+    font-size:22px;
+  }
+
+  @media (max-width:900px){
+    .hero-content{max-width:100%;padding:0 24px;}
+    .hero-name{font-size:48px;}
+    .hero-disciplines{font-size:16px;}
+    .hero-tagline{font-size:19px;}
+    .hero::after{background:linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.93) 55%, rgba(10,10,10,0.98) 100%);}
+    .navbar{padding:14px 20px;}
+  }
+</style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="mark"><span class="j">J</span><span class="h">H</span></div>
+    <div class="divider"></div>
+    <div>
+      <div class="brand-name">JAMARI HALLMAN</div>
+      <div class="brand-tags">CIVIL | STRUCTURAL | VDC | BIM</div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-name">Jamari<br>Hallman</h1>
+      <div class="hero-divider"></div>
+      <div class="hero-disciplines">Civil | Structural | VDC | BIM</div>
+      <div class="hero-tagline">Design. Analyze. Build.</div>
+      <p class="hero-subtitle">Civil &amp; Structural Engineering Portfolio</p>
+      <a href="portfolio.html" class="cta-button">
+        View Projects
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </a>
+    </div>
+    <div class="scroll-cue">&#8964;</div>
+  </section>
+
+</body>
+</html>
