@@ -2,59 +2,333 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>[Project Name] | Jamari Hallman</title>
+<title>Transit-Accessible Parking Lot Design | Jamari Hallman</title>
 <style>
-  body { font-family: -apple-system, Helvetica, Arial, sans-serif; background: #0c0b09; margin: 0; color: #f2ede2; }
-  .wrap { max-width: 1100px; margin: 0 auto; padding: 60px 48px; }
-  .back { display: inline-block; color: #8a7b5c; text-decoration: none; font-size: 13px; margin-bottom: 28px; }
-  .back:hover { text-decoration: underline; }
-  .tag { display: inline-block; font-size: 11px; color: #c9a24b; border: 1px solid #4a3f28; border-radius: 999px; padding: 4px 12px; margin-bottom: 14px; }
-  h1 { font-size: 32px; font-weight: 700; margin: 0 0 6px; color: #f2ede2; }
-  .subtitle { font-size: 14px; color: #a89a83; margin: 0 0 32px; }
+  :root{
+    --gold:#c9a227;
+    --gold-bright:#e0b93a;
+    --black:#0a0a0a;
+    --border:#3a3420;
+    --text-body:#d8d2c2;
+    --text-muted:#a89a83;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:-apple-system, Helvetica, Arial, sans-serif;
+    background-color:var(--black);
+    background-image:
+      linear-gradient(rgba(201,162,75,0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,162,75,0.045) 1px, transparent 1px);
+    background-size:46px 46px, 46px 46px;
+    color:#f2ede2;
+  }
+  .wrap{max-width:1240px;margin:0 auto;padding:0 40px 70px;}
 
-  .hero-block { margin-bottom: 24px; }
-  .pic-hero { width: 100%; height: 420px; border-radius: 8px; background: #1a1712; border: 1px dashed #4a3f28; display: flex; align-items: center; justify-content: center; color: #6b6357; font-size: 13px; margin-bottom: 8px; }
-  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 36px; }
-  .pic-normal { width: 100%; height: 280px; border-radius: 8px; background: #1a1712; border: 1px dashed #4a3f28; display: flex; align-items: center; justify-content: center; color: #6b6357; font-size: 12px; margin-bottom: 8px; text-align: center; padding: 0 10px; }
-  .cap { font-size: 13px; line-height: 1.6; color: #d8d2c2; margin: 0; }
+  /* Nav */
+  .navbar{
+    display:flex; align-items:center;
+    padding:16px 40px;
+    border-bottom:2px solid var(--gold);
+    flex-wrap:wrap;
+  }
+  .navbar img{height:38px;display:block;}
+  .navbar .divider{width:1px;height:32px;background:rgba(255,255,255,0.25); margin-left:16px;}
+  .navbar .brand{margin-left:16px;}
+  .navbar .brand-name{font-size:18px;font-weight:700;letter-spacing:1px;color:#fff;line-height:1.2;}
+  .navbar .brand-tags{font-size:10.5px;font-weight:600;letter-spacing:1.5px;color:var(--gold-bright);margin-top:2px;}
+  .navbar .menu{display:flex; margin-left:auto; margin-right:40px;}
+  .navbar .menu span{font-size:12px; font-weight:700; letter-spacing:2px; color:#e8e2d5; margin-left:22px;}
+  .navbar .menu span:first-child{margin-left:0;}
 
-  h2 { font-size: 15px; color: #c9a24b; text-transform: uppercase; letter-spacing: 0.05em; margin: 32px 0 10px; }
-  p.body { font-size: 14px; line-height: 1.7; color: #d8d2c2; margin: 0; }
+  /* Hero */
+  .hero{
+    position:relative;
+    padding:36px 40px 30px;
+    border-bottom:1px solid var(--border);
+    overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute; top:0; right:0; bottom:0; left:0;
+    background-image:url('hero-blueprint.jpg');
+    background-size:cover;
+    background-position:center right;
+    opacity:0.55;
+  }
+  .hero-fade{
+    position:absolute; top:0; right:0; bottom:0; left:0;
+    background:linear-gradient(90deg, rgba(10,10,10,0.97) 0%, rgba(10,10,10,0.9) 42%, rgba(10,10,10,0.55) 75%, rgba(10,10,10,0.3) 100%);
+  }
+  .hero-content{position:relative; z-index:2; max-width:700px;}
+  .hero-rail{
+    position:absolute; z-index:2; top:36px; right:40px;
+    text-align:right;
+  }
+  .hero-rail div{font-size:10.5px; font-weight:700; letter-spacing:2px; color:var(--text-muted); margin-bottom:16px;}
+  .eyebrow{font-size:12px; font-weight:700; letter-spacing:3px; color:var(--gold-bright); margin:0 0 6px;}
+  .hero-title{font-size:34px; font-weight:800; line-height:1.15; margin:0 0 10px; color:#fff; text-transform:uppercase;}
+  .hero-title .accent{color:var(--gold-bright);}
+  .hero-sub{font-size:14px; color:var(--text-muted); margin:0 0 14px;}
+  .hero-desc{font-size:13.5px; color:var(--text-body); max-width:600px; line-height:1.7; margin:0 0 16px;}
+  .hero-tagline{font-size:13px; font-weight:700; letter-spacing:1px; color:var(--gold-bright); border-top:1px solid var(--border); padding-top:14px; display:inline-block; text-transform:uppercase;}
+
+  /* Stat strip */
+  .stats{
+    display:flex; justify-content:space-between;
+    padding:26px 10px;
+    border-bottom:1px solid var(--border);
+  }
+  .stat{text-align:center; flex:1; display:flex; align-items:center; justify-content:center;}
+  .stat-icon-wrap{
+    width:44px; height:44px; border-radius:50%; border:1px solid var(--border);
+    display:flex; align-items:center; justify-content:center; margin-right:14px; flex-shrink:0;
+  }
+  .stat-icon{font-size:18px; color:var(--gold);}
+  .stat-text{text-align:left;}
+  .stat .num{font-size:15px; font-weight:800; color:#fff; letter-spacing:0.3px;}
+  .stat .lbl{font-size:10.5px; color:var(--text-muted); margin-top:2px;}
+
+  /* Ribbon section heading */
+  .ribbon{
+    position:relative;
+    display:inline-block;
+    background:var(--gold);
+    color:#0a0a0a;
+    font-size:13px; font-weight:800; letter-spacing:1.5px;
+    padding:8px 22px 8px 16px;
+    clip-path:polygon(0 0, 100% 0, 92% 100%, 0% 100%);
+    margin-bottom:0;
+  }
+  .section-label{font-size:13px; font-weight:700; letter-spacing:1.5px; color:var(--gold-bright); text-transform:uppercase; margin-bottom:14px;}
+
+  /* Gold-framed panels */
+  .gold-frame{border:1px solid var(--border); border-radius:6px; overflow:hidden; position:relative; background:#111;}
+  .gold-frame::after{content:""; position:absolute; top:0; right:0; bottom:0; left:0; border:1px solid rgba(201,162,75,0.25); border-radius:6px; pointer-events:none;}
+
+  .panels{margin-top:44px;}
+  .panel-badge{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:34px; height:34px; border-radius:50%; background:var(--gold);
+    color:#0a0a0a; font-weight:800; font-size:15px; flex-shrink:0;
+  }
+  .panel-big{margin-bottom:22px;}
+  .panel-big img{width:100%; height:400px; object-fit:cover; display:block; background:#fff;}
+  .panel-header{display:flex; align-items:center; margin-top:14px;}
+  .panel-header .panel-title{margin-left:12px;}
+  .panel-title{font-size:16px; font-weight:800; color:#fff; margin:0; letter-spacing:0.5px;}
+  .panel-subtitle{font-size:12.5px; color:var(--text-muted); margin:2px 0 0 46px;}
+
+  .panel-row{display:flex; gap:18px;}
+  .panel-row .panel-small{flex:1;}
+  .panel-small img{width:100%; height:190px; object-fit:cover; display:block; background:#fff;}
+  .panel-small .panel-header{margin-top:12px;}
+  .panel-small .panel-header .panel-title{margin-left:10px;}
+  .panel-small .panel-badge{width:26px; height:26px; font-size:12px;}
+  .panel-small .panel-title{font-size:13px;}
+  .panel-small .panel-subtitle{font-size:11px; margin-left:36px;}
+  .mini-list{list-style:none; margin:8px 0 0; padding:0;}
+  .mini-list li{font-size:11px; color:var(--text-body); padding:2px 0 2px 36px; position:relative; line-height:1.5;}
+  .mini-list li::before{content:"•"; position:absolute; left:22px; color:var(--gold);}
+
+  /* Overview + info table */
+  .overview-row{display:flex; gap:36px; margin-top:52px;}
+  .overview-row .col-main{flex:1.3;}
+  .overview-row .col-info{flex:1;}
+  .overview-text{font-size:13.5px; line-height:1.8; color:var(--text-body); margin:0;}
+  .info-box{border:1px solid var(--border); border-radius:6px; padding:18px 20px;}
+  .info-box-title{font-size:12px; font-weight:700; letter-spacing:1.5px; color:var(--gold-bright); margin:0 0 12px; text-transform:uppercase;}
+  .info-table{width:100%; border-collapse:collapse; font-size:12.5px;}
+  .info-table tr{border-bottom:1px solid var(--border);}
+  .info-table tr:last-child{border-bottom:none;}
+  .info-table td{padding:8px 4px; color:var(--text-body);}
+  .info-table td:first-child{color:var(--text-muted); width:40%;}
+
+  /* Three column bottom */
+  .triple{display:flex; gap:30px; margin-top:52px; padding-top:32px; border-top:1px solid var(--border);}
+  .triple > div{flex:1;}
+  .triple-title{display:flex; align-items:center; margin-bottom:14px;}
+  .triple-icon{font-size:16px; color:var(--gold); margin-right:10px;}
+  .triple-title span{font-size:13px; font-weight:700; letter-spacing:1px; color:var(--gold-bright); text-transform:uppercase;}
+  .check-list{list-style:none; margin:0; padding:0;}
+  .check-list li{font-size:12.5px; color:var(--text-body); padding:5px 0 5px 22px; position:relative; line-height:1.5;}
+  .check-list li::before{content:"✓"; position:absolute; left:0; top:5px; color:var(--gold); font-weight:700;}
+  .plain-text{font-size:12.5px; color:var(--text-body); line-height:1.75; margin:0;}
+
+  /* Footer */
+  .footer-row{
+    display:flex; justify-content:space-between; align-items:center;
+    margin-top:56px; padding-top:22px;
+    border-top:1px solid var(--border);
+  }
+  .footer-tag{font-size:11.5px; letter-spacing:2.5px; color:var(--gold-bright); text-transform:uppercase; font-weight:700;}
+  .footer-triad{font-size:11px; letter-spacing:2px; color:var(--text-muted); text-transform:uppercase;}
 </style>
 </head>
 <body>
+
+<nav class="navbar">
+  <img src="jh-logo.png" alt="JH">
+  <div class="divider"></div>
+  <div class="brand">
+    <div class="brand-name">JAMARI HALLMAN</div>
+    <div class="brand-tags">CIVIL · STRUCTURAL · VDC · BIM</div>
+  </div>
+  <div class="menu">
+    <span>PLAN</span><span>DESIGN</span><span>ANALYZE</span><span>BUILD</span>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-fade"></div>
+  <div class="hero-rail">
+    <div>PEOPLE</div>
+    <div>MOVEMENT</div>
+    <div>ACCESSIBILITY</div>
+    <div>DRAINAGE</div>
+    <div>COMMUNITY</div>
+  </div>
+  <div class="hero-content">
+    <p class="eyebrow">ACADEMIC PROJECT</p>
+    <h1 class="hero-title">Transit-Accessible<br><span class="accent">Parking Lot Design</span></h1>
+    <p class="hero-sub">Site Civil / Land Development &mdash; Class Project</p>
+    <p class="hero-desc">A multimodal site design integrating parking, public transit, accessibility, stormwater management, and site amenities within a constrained urban parcel along N. Tryon Street.</p>
+    <div class="hero-tagline">Infrastructure Creates Opportunity.</div>
+  </div>
+</div>
+
 <div class="wrap">
 
-  <a class="back" href="../transportation.html">&larr; Back to Transportation</a>
-
-  <span class="tag">Academic Project</span>
-  <h1>[Project Name]</h1>
-  <p class="subtitle">Transportation / roadway design, class project</p>
-
-  <div class="hero-block">
-    <div class="pic-hero">[ Picture 1 &mdash; overall site view ]</div>
-    <p class="cap">[1&ndash;2 sentences on what the overall site view shows.]</p>
-  </div>
-
-  <div class="row">
-    <div>
-      <div class="pic-normal">[ Picture 2 &mdash; roadway profile view ]</div>
-      <p class="cap">[1&ndash;2 sentences on what the profile view shows.]</p>
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-icon-wrap"><span class="stat-icon">&#128663;</span></div>
+      <div class="stat-text"><div class="num">191</div><div class="lbl">PARKING SPACES</div></div>
     </div>
-    <div>
-      <div class="pic-normal">[ Picture 3 &mdash; additional site view ]</div>
-      <p class="cap">[1&ndash;2 sentences on what this view shows.]</p>
+    <div class="stat">
+      <div class="stat-icon-wrap"><span class="stat-icon">&#128652;</span></div>
+      <div class="stat-text"><div class="num">FULL-SIZE BUS</div><div class="lbl">TRANSIT CIRCULATION</div></div>
+    </div>
+    <div class="stat">
+      <div class="stat-icon-wrap"><span class="stat-icon">&#128167;</span></div>
+      <div class="stat-text"><div class="num">11,500 SF</div><div class="lbl">DETENTION POND</div></div>
+    </div>
+    <div class="stat">
+      <div class="stat-icon-wrap"><span class="stat-icon">&#9855;</span></div>
+      <div class="stat-text"><div class="num">ADA + PEDESTRIAN</div><div class="lbl">ACCESSIBLE DESIGN</div></div>
     </div>
   </div>
 
-  <h2>Overview</h2>
-  <p class="body">[What the project is, the scope, and the main design goal.]</p>
+  <div class="panels">
+    <div class="panel-big">
+      <div class="gold-frame"><img src="panel1-overall-site.jpg" alt="Overall site plan"></div>
+      <div class="panel-header"><span class="panel-badge">01</span><p class="panel-title">OVERALL SITE PLAN</p></div>
+      <p class="panel-subtitle">Complete Layout</p>
+    </div>
 
-  <h2>What's Included</h2>
-  <p class="body">[The specific roadway elements, infrastructure, or design components in the project.]</p>
+    <div class="panel-row">
+      <div class="panel-small">
+        <div class="gold-frame"><img src="panel2-parking-layout.jpg" alt="Parking layout"></div>
+        <div class="panel-header"><span class="panel-badge">02</span><p class="panel-title">PARKING LAYOUT</p></div>
+        <p class="panel-subtitle">Stall Configuration &amp; Circulation</p>
+        <ul class="mini-list">
+          <li>191-space parking configuration</li>
+          <li>9' &times; 18' typical stalls</li>
+          <li>24' drive aisles</li>
+          <li>Landscaped islands and site lighting</li>
+        </ul>
+      </div>
+      <div class="panel-small">
+        <div class="gold-frame"><img src="panel3-transit.jpg" alt="Transit circulation"></div>
+        <div class="panel-header"><span class="panel-badge">03</span><p class="panel-title">TRANSIT CIRCULATION</p></div>
+        <p class="panel-subtitle">Bus Access &amp; Turning Movements</p>
+        <ul class="mini-list">
+          <li>Full-size city bus circulation</li>
+          <li>Coordinated with pedestrian access</li>
+          <li>Specialized turning geometry</li>
+          <li>Integrated with parking field</li>
+        </ul>
+      </div>
+    </div>
 
-  <h2>Complications</h2>
-  <p class="body">[The main challenge or design constraint you worked through.]</p>
+    <div class="panel-row" style="margin-top:18px;">
+      <div class="panel-small">
+        <div class="gold-frame"><img src="panel4-ada.jpg" alt="ADA and pedestrian"></div>
+        <div class="panel-header"><span class="panel-badge">04</span><p class="panel-title">ADA &amp; PEDESTRIAN</p></div>
+        <p class="panel-subtitle">Accessible Design Features</p>
+        <ul class="mini-list">
+          <li>ADA-accessible parking spaces</li>
+          <li>Pedestrian crossings and connectivity</li>
+          <li>Ramps and accessible routes</li>
+          <li>Integrated with transit circulation</li>
+        </ul>
+      </div>
+      <div class="panel-small">
+        <div class="gold-frame"><img src="panel5-stormwater.jpg" alt="Stormwater management"></div>
+        <div class="panel-header"><span class="panel-badge">05</span><p class="panel-title">STORMWATER MANAGEMENT</p></div>
+        <p class="panel-subtitle">Detention Pond &amp; Site Features</p>
+        <ul class="mini-list">
+          <li>11,500 sq ft detention pond</li>
+          <li>Integrated landscaping</li>
+          <li>Site lighting and amenities</li>
+          <li>Supports runoff management and water quality</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="overview-row">
+    <div class="col-main">
+      <p class="section-label">Project Overview</p>
+      <p class="overview-text">This site development project integrates a 191 space parking facility with full-size city bus access, ADA accessible parking, pedestrian circulation, landscaping, site lighting, and stormwater management within a constrained parcel along N. Tryon Street. The design supports both everyday vehicle circulation and public transit operations within the same development footprint, demonstrating a systems-based approach to site design.</p>
+    </div>
+    <div class="col-info">
+      <div class="info-box">
+        <p class="info-box-title">Project Information</p>
+        <table class="info-table">
+          <tr><td>Location</td><td>N. Tryon Street, Charlotte, NC</td></tr>
+          <tr><td>Site Size</td><td>30' &times; 40' (Approx.)</td></tr>
+          <tr><td>Total Parking Spaces</td><td>191 Spaces</td></tr>
+          <tr><td>Key Features</td><td>Transit circulation, ADA access, pedestrian pathways, detention pond</td></tr>
+          <tr><td>Software</td><td>Civil 3D (Site Design)</td></tr>
+          <tr><td>Project Type</td><td>Academic &ndash; Site Civil / Land Development</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="triple">
+    <div>
+      <div class="triple-title"><span class="triple-icon">&#9881;</span><span>Design Considerations</span></div>
+      <ul class="check-list">
+        <li>Transit circulation and turning geometry</li>
+        <li>ADA compliance and pedestrian flow</li>
+        <li>Efficient use of constrained site area</li>
+        <li>Stormwater detention and site grading</li>
+        <li>Landscaping, lighting, and safety</li>
+        <li>Coordination of multiple site systems</li>
+      </ul>
+    </div>
+    <div>
+      <div class="triple-title"><span class="triple-icon">&#128161;</span><span>Design Approach</span></div>
+      <p class="plain-text">I approached the layout as a multimodal circulation and site-optimization problem, where transportation, accessibility, drainage, and land use requirements must function together. The design balances efficient parking with transit operations and site infrastructure, demonstrating how thoughtful geometric planning can make several competing engineering systems work within one cohesive design.</p>
+    </div>
+    <div>
+      <div class="triple-title"><span class="triple-icon">&#128202;</span><span>Key Takeaways</span></div>
+      <ul class="check-list">
+        <li>191-space parking facility</li>
+        <li>Full-size city bus access</li>
+        <li>ADA-compliant design</li>
+        <li>11,500 sq ft detention pond</li>
+        <li>Pedestrian connectivity</li>
+        <li>Integrated, buildable site layout</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-row">
+    <div class="footer-tag">Civil Engineering Builds What Connects Us</div>
+    <div class="footer-triad">People &nbsp;|&nbsp; Places &nbsp;|&nbsp; Possibilities</div>
+  </div>
 
 </div>
 </body>
