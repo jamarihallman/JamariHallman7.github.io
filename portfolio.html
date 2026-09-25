@@ -1,3 +1,4 @@
+Makes sense — since `portfolio.html` sits one level below your home page, it needs a link back to `index.html`. Let's add it in the same style as your other project pages.Here's the full updated code with the back button added:```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -115,6 +116,18 @@
       letter-spacing: .06em;
     }
 
+    .back {
+      position: absolute;
+      z-index: 3;
+      top: 24px;
+      left: 30px;
+      color: rgba(245,245,242,.7);
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: .05em;
+    }
+    .back:hover { color: var(--bright-gold); text-decoration: underline; }
+
     @media (max-width: 750px) {
       .home-content { justify-content: flex-start; padding: 70px 20px 110px; }
       .portfolio-nav { flex-wrap: wrap; gap: 20px; }
@@ -126,6 +139,7 @@
 
 <body>
   <main class="home">
+    <a class="back" href="index.html">&larr; Back to Home</a>
     <div class="home-content">
 
       <img class="logo-mark" src="portfolio-images/jh-logo-gold.png" alt="JH">
@@ -154,3 +168,6 @@
   </main>
 </body>
 </html>
+```
+
+Added a "← Back to Home" link in the top-left corner, pointing to `index.html`, in the same muted-gold style used across your other pages. Paste this whole thing over your current `portfolio.html`.
