@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Regional Airport Terminal Design Details | Jamari Hallman</title>
+<style>
+  @page{size:17in 11in; margin:0;}
+  :root{
+    --gold:#c9a227;
+    --gold-bright:#e0b93a;
+    --black:#020202;
+    --border:#332a1a;
+    --text-body:#d8d2c2;
+    --text-muted:#a89a83;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0; padding:0;}
+  body{
+    font-family:-apple-system, Helvetica, Arial, sans-serif;
+    background-color:var(--black);
+    color:#f2ede2;
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+
+  /* 11 x 17 sheet (landscape): 17in x 11in = 1632px x 1056px */
+  .sheet-holder{margin:0 auto; width:1632px;}
+  .sheet{
+    width:1632px; height:1056px; position:relative;
+    transform-origin:top left;
+    background-color:var(--black);
+    background-image:
+      radial-gradient(circle at 15% 0%, rgba(201,162,75,0.07) 0%, transparent 40%),
+      linear-gradient(rgba(201,162,75,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,162,75,0.04) 1px, transparent 1px);
+    background-size:auto, 46px 46px, 46px 46px;
+    border:2px solid var(--gold);
+    padding:26px 30px 0;
+    overflow:hidden;
+  }
+  .sheet-inner{border:1px solid var(--border); position:absolute; top:8px; right:8px; bottom:8px; left:8px; pointer-events:none;}
+
+  /* Header */
+  .top{display:flex; align-items:center; justify-content:space-between; height:52px; border-bottom:2px solid var(--gold); padding-bottom:10px;}
+  .brand{display:flex; align-items:center;}
+  .brand img{height:38px; display:block; margin-right:14px;}
+  .brand .divider{width:1px; height:32px; background:rgba(255,255,255,0.25); margin-right:14px;}
+  .brand-name{font-size:18px; font-weight:700; letter-spacing:1px; color:#fff; line-height:1.2;}
+  .brand-tags{font-size:10.5px; font-weight:600; letter-spacing:1.5px; color:var(--gold-bright); margin-top:2px;}
+  .back{color:var(--text-muted); text-decoration:none; font-size:13px;}
+  .back:hover{color:var(--gold-bright); text-decoration:underline;}
+
+  /* Title block */
+  .title-row{display:flex; align-items:flex-end; justify-content:space-between; margin-top:18px; height:78px;}
+  .eyebrow{font-size:12px; font-weight:700; letter-spacing:2px; color:var(--gold-bright); margin:0 0 6px;}
+  .page-title{font-size:32px; font-weight:800; line-height:1.1; margin:0 0 6px; color:#fff;}
+  .page-sub{font-size:15px; font-weight:600; color:var(--gold-bright); margin:0;}
+  .sheet-tag{text-align:right; font-size:11.5px; letter-spacing:2px; color:var(--text-muted); text-transform:uppercase; line-height:1.7;}
+
+  /* 2 x 2 grid */
+  .grid{margin-top:16px; border-top:1px solid var(--border); padding-top:16px;}
+  .row{display:flex;}
+  .row + .row{margin-top:16px;}
+  .cell{width:772px; height:336px;}
+  .cell + .cell{margin-left:28px;}
+
+  .head{display:flex; align-items:center; margin-bottom:10px;}
+  .num{
+    width:34px; height:34px; border-radius:50%; background:var(--gold);
+    color:var(--black); font-weight:800; font-size:14px; margin-right:12px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .p-title{font-size:15px; font-weight:700; color:var(--gold-bright); text-transform:uppercase; letter-spacing:0.5px; margin:0;}
+  .p-sub{font-size:12.5px; color:var(--text-muted); margin:2px 0 0;}
+
+  .body{display:flex;}
+  .frame{
+    width:476px; height:282px; flex-shrink:0;
+    border:1px solid var(--gold); border-radius:8px; padding:6px; background:#050505;
+    display:flex; align-items:center; justify-content:center;
+    cursor:zoom-in; position:relative;
+  }
+  .frame img{max-width:100%; max-height:100%; display:block; border-radius:4px;}
+  .frame:hover{box-shadow:0 0 0 2px rgba(224,185,58,0.35);}
+  .text{margin-left:20px; flex:1;}
+  .hint{font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); margin:8px 0 0;}
+  .p-list{list-style:none; margin:0; padding:0;}
+  .p-list li{font-size:13px; color:var(--text-body); padding:4px 0 4px 20px; position:relative; line-height:1.45;}
+  .p-list li::before{content:"\25CB"; position:absolute; left:0; top:5px; color:var(--gold); font-size:10px;}
+  .tagline{font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-muted); margin:10px 0 0;}
+
+  /* Disclaimer */
+  .note{
+    position:absolute; left:30px; right:30px; bottom:88px;
+    padding:12px 20px;
+    border:1px solid var(--gold); border-radius:8px;
+    background:rgba(201,162,39,0.07);
+    font-size:13px; line-height:1.6; color:var(--text-body);
+  }
+  .note strong{color:var(--gold-bright); letter-spacing:1.5px; font-size:11.5px; text-transform:uppercase; margin-right:8px;}
+
+  /* See more bar */
+  .see-more{
+    position:absolute; left:30px; right:30px; bottom:22px;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 0;
+    border-top:1px solid var(--gold); border-bottom:1px solid var(--gold);
+  }
+  .see-more a{text-decoration:none; text-transform:uppercase; font-size:12.5px; letter-spacing:2.5px; font-weight:700; transition:color .2s;}
+  .see-more .back-link{color:var(--text-muted);}
+  .see-more .back-link:hover{color:var(--gold-bright);}
+  .see-more .more-link{color:var(--gold);}
+  .see-more .more-link span{display:inline-block; margin-left:8px; transition:transform .2s;}
+  .see-more .more-link:hover{color:var(--gold-bright);}
+  .see-more .more-link:hover span{transform:translateX(6px);}
+
+  /* Click to enlarge */
+  .lightbox{
+    display:none; position:fixed; top:0; right:0; bottom:0; left:0; z-index:999;
+    background:rgba(2,2,2,0.94); cursor:zoom-out;
+    align-items:center; justify-content:center; flex-direction:column;
+  }
+  .lightbox.open{display:flex;}
+  .lightbox img{max-width:94vw; max-height:86vh; border:1px solid var(--gold); border-radius:6px; background:#050505;}
+  .lightbox p{margin:14px 0 0; font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--text-muted);}
+
+  @media print{
+    html,body{background:var(--black);}
+    .sheet-holder{width:1632px !important; margin:0;}
+    .sheet{transform:none !important;}
+    .hint, .lightbox{display:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet-holder" id="holder">
+<div class="sheet" id="sheet">
+  <div class="sheet-inner"></div>
+
+  <div class="top">
+    <div class="brand">
+      <img src="../jh-logo.png" alt="JH">
+      <div class="divider"></div>
+      <div>
+        <div class="brand-name">JAMARI HALLMAN</div>
+        <div class="brand-tags">CIVIL &middot; STRUCTURAL &middot; VDC &middot; BIM</div>
+      </div>
+    </div>
+    <a class="back" href="../airport-terminal.html">&larr; Back to Airport Terminal</a>
+  </div>
+
+  <div class="title-row">
+    <div>
+      <p class="eyebrow">MORE DESIGNS</p>
+      <h1 class="page-title">Regional Airport Terminal Design Details</h1>
+      <p class="page-sub">How the Terminal Works, Stands and Is Supported</p>
+    </div>
+    <div class="sheet-tag">Sheet Size 11 &times; 17<br>Regional Airport &middot; 7-Gate Terminal</div>
+  </div>
+
+  <div class="grid">
+
+    <div class="row">
+
+      <div class="cell">
+        <div class="head">
+          <div class="num">01</div>
+          <div>
+            <p class="p-title">Passenger Flow</p>
+            <p class="p-sub">Interior Section</p>
+          </div>
+        </div>
+        <div class="body">
+          <div class="frame" data-full="airport-passenger-flow.png" data-cap="Passenger flow: interior section (concept illustration)">
+            <img src="airport-passenger-flow.png" alt="Airport terminal interior section showing passenger flow">
+          </div>
+          <div class="text">
+            <ul class="p-list">
+              <li>Departure concourse, retail and check-in on the upper level</li>
+              <li>Baggage claim, arrivals and security screening below</li>
+              <li>Escalator links the two levels</li>
+              <li>Laid out around passenger processing and gate operations</li>
+            </ul>
+            <p class="tagline">Concept illustration</p>
+            <p class="hint">Click the image to enlarge</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cell">
+        <div class="head">
+          <div class="num">02</div>
+          <div>
+            <p class="p-title">Structural Concept</p>
+            <p class="p-sub">Roof Framing and Load Paths</p>
+          </div>
+        </div>
+        <div class="body">
+          <div class="frame" data-full="airport-structural-concept.png" data-cap="Structural concept: roof framing and load paths (concept illustration)">
+            <img src="airport-structural-concept.png" alt="Conceptual structural diagram of the airport terminal showing framing and load paths">
+          </div>
+          <div class="text">
+            <ul class="p-list">
+              <li>Long-span steel roof framing concept</li>
+              <li>Gravity loads and wind uplift on the roof</li>
+              <li>Column load paths down to spread footings</li>
+              <li>Lateral bracing and roof drainage shown conceptually</li>
+            </ul>
+            <p class="tagline">Concept illustration</p>
+            <p class="hint">Click the image to enlarge</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="cell">
+        <div class="head">
+          <div class="num">03</div>
+          <div>
+            <p class="p-title">Footing Design</p>
+            <p class="p-sub">Isolated Spread (Pad) Footing</p>
+          </div>
+        </div>
+        <div class="body">
+          <div class="frame" data-full="airport-footing-design.png" data-cap="Isolated spread footing (concept illustration)">
+            <img src="airport-footing-design.png" alt="Isolated spread footing detail with plan, section and isometric views">
+          </div>
+          <div class="text">
+            <ul class="p-list">
+              <li>Supports a single column</li>
+              <li>Spreads the column load into the soil</li>
+              <li>Bottom reinforcement mat in the footing</li>
+              <li>Plan, section and isometric views</li>
+            </ul>
+            <p class="tagline">Concept illustration</p>
+            <p class="hint">Click the image to enlarge</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cell">
+        <div class="head">
+          <div class="num">04</div>
+          <div>
+            <p class="p-title">Formula Reference</p>
+            <p class="p-sub">Structural Design Formulas</p>
+          </div>
+        </div>
+        <div class="body">
+          <div class="frame" data-full="airport-formulas.png" data-cap="Structural engineering formula reference (educational reference)">
+            <img src="airport-formulas.png" alt="Airport terminal structural engineering formula reference sheet">
+          </div>
+          <div class="text">
+            <ul class="p-list">
+              <li>Loads, tributary areas and load combinations</li>
+              <li>Steel, concrete and foundation checks</li>
+              <li>Lateral system, connections and roof serviceability</li>
+              <li>Based on ASCE 7, AISC 360 and ACI 318</li>
+            </ul>
+            <p class="tagline">Educational reference sheet</p>
+            <p class="hint">Click the image to enlarge</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="note">
+    <strong>Theory and concept only</strong>
+    These graphics are ideas of what the terminal design could look like. They are not real-world engineered drawings or calculations, and they have not been reviewed, stamped or signed off by a licensed engineer.
+  </div>
+
+  <div class="see-more">
+    <a class="back-link" href="../airport-terminal.html">&larr; Back to Airport Terminal</a>
+    <a class="more-link" href="../../structural-design.html">See more Structural Design projects <span>&rarr;</span></a>
+  </div>
+
+</div>
+</div>
+
+<div class="lightbox" id="lightbox">
+  <img id="lb-img" src="" alt="">
+  <p id="lb-cap"></p>
+</div>
+
+<script>
+  // Shrinks the 11 x 17 sheet to fit smaller screens. On a wide screen it stays full size.
+  (function(){
+    var sheet = document.getElementById('sheet');
+    var holder = document.getElementById('holder');
+    function fit(){
+      var s = Math.min(1, window.innerWidth / 1632);
+      sheet.style.transform = 'scale(' + s + ')';
+      holder.style.width = (1632 * s) + 'px';
+      holder.style.height = (1056 * s) + 'px';
+    }
+    fit();
+    window.addEventListener('resize', fit);
+  })();
+
+  // Click an image to enlarge it. Click anywhere or press Esc to close.
+  (function(){
+    var box = document.getElementById('lightbox');
+    var img = document.getElementById('lb-img');
+    var cap = document.getElementById('lb-cap');
+    var frames = document.querySelectorAll('.frame');
+    for (var i = 0; i < frames.length; i++) {
+      frames[i].addEventListener('click', function(){
+        img.src = this.getAttribute('data-full');
+        cap.textContent = this.getAttribute('data-cap') + '  |  Click anywhere to close';
+        box.className = 'lightbox open';
+      });
+    }
+    function close(){ box.className = 'lightbox'; }
+    box.addEventListener('click', close);
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
+  })();
+</script>
+
+</body>
+</html>
