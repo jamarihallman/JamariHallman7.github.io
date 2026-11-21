@@ -119,6 +119,19 @@
   .check-list li{font-size:13px; color:var(--text-body); padding:5px 0 5px 22px; position:relative; line-height:1.5;}
   .check-list li::before{content:"✓"; position:absolute; left:0; top:5px; color:var(--gold); font-weight:700;}
 
+  /* Design details button */
+  .details-btn-wrap{margin-top:40px; text-align:center;}
+  .details-btn{
+    display:inline-block; padding:14px 34px;
+    border:1px solid var(--gold); border-radius:6px;
+    color:var(--gold); text-decoration:none;
+    text-transform:uppercase; font-size:12.5px; font-weight:700; letter-spacing:2.5px;
+    transition:background .2s, color .2s;
+  }
+  .details-btn span{display:inline-block; margin-left:8px; transition:transform .2s;}
+  .details-btn:hover{background:var(--gold); color:var(--black);}
+  .details-btn:hover span{transform:translateX(6px);}
+
   /* See more bar */
   .see-more{
     display:flex; align-items:center; justify-content:space-between;
@@ -236,6 +249,10 @@
         </ul>
       </div>
     </div>
+  </div>
+
+  <div class="details-btn-wrap">
+    <a class="details-btn" href="residential-details/">View Design Details <span>&rarr;</span></a>
   </div>
 
   <div class="schedule-row">
